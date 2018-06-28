@@ -263,6 +263,9 @@
       <name>$PROJ_DIR$\..\..\src\drivers\BEEP\beep.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\src\drivers\cmt\cmt.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\src\drivers\delay\delay.c</name>
     </file>
     <file>

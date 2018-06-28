@@ -6,5 +6,6 @@
 void Speed_Control(void);
 void Speed_output(void);
 void AD_new(void);
+void Servo_Diff_PID(void);
 
 #endif

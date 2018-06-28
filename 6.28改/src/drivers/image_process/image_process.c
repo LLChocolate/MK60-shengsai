@@ -20,7 +20,6 @@ u8 Cross_flag;
 u16 Cross_flag_delay;
 u16 Cross_flag_delay_const = 1000;
 
-
 Image_hangData Image_hang;
 Image_lieData  Image_lie={{78,158,238},{0}};
 Island_Data    Island={

@@ -61,15 +61,14 @@ float Acc_K=1;
 u16 stand_AD_L = 0xffff;
 u16 stand_AD_R = 0xffff;
 u16 stand_AD   = 0Xffff;
+PID_Struct Servo_PID;
+int center_temp_test = 160;
 //******************************************************************
 void main()
 {
-
-
   u8 Str_temp[40];//
   u8 Key;
   u16 i=0,j;
-
   System_Init();
   Brush_Color=Black;
   Motor1_PID.P=P_TEMP1;
@@ -82,13 +81,6 @@ void main()
   Motor2_PID.target=Speed_goal2;
   Duty_Motor1=10000;
   Duty_Motor2=10000;
-//  while(1)
-//  {
-//    MOTOR1_DIR=0;
-//    FTM_PWM_Duty(MOTOR_1,Duty_Motor1);
-//    MOTOR2_DIR=0;
-//    FTM_PWM_Duty(MOTOR_2,Duty_Motor2);
-//  }
 while(1)
 {
   Motor1_PID.P=P_TEMP1;
@@ -97,7 +89,21 @@ while(1)
   Motor2_PID.P=P_TEMP2;
   Motor2_PID.I=I_TEMP2;
   Motor2_PID.D=D_TEMP2;
-
+  Key = KEY_Scan();
+  if(Key == KEY1_PRES)
+  {
+    LCD_init(FALSE);
+    Disp_single_colour(White);
+    LCD_DISPLAY_FLAG = 1;
+  }
+  else if(Key == KEY2_PRES)
+  {
+    LCD_DISPLAY_FLAG = 0;
+  }
+  else if(Key == KEY3_PRES)
+  {
+    Beep_Once(&Image_Island_Test_Beep);
+  }
 //摄像头采集一次
 //图像处理  
     if(Image_Flag==1)

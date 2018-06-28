@@ -700,3 +700,29 @@ void FTM_Input_init(FTMn ftmn, CHn ch, Input_cfg cfg)
     enable_irq(78 - 16 + ftmn);
 }
 
+/*!
+ *  @brief      输入捕捉获取捕捉事件的时间
+ *  @param      TPMn_e          模块号（TPM0、  TPM1、  TPM2）
+ *  @param      TPM_CHn_e       通道号（CH0~CH7）
+ *  @return     获取捕捉事件发生时的计数器值 (根据两次捕捉之间的差值可判断周期频率)
+ *  @since      v5.2
+ *  Sample usage:       uint16 data = tpm_input_get (TPM0, TPM_CH0) ;   // 获取TPM0_CH0输入捕捉事件触发时的计数值
+ */
+//uint16   FTM_input_get (FTMn ftmn, CHn ch)
+//{
+//    ASSERT( ftmn < TPM_MAX );  //检查传递进来的通道是否正确
+//
+//    return (uint16)TPM_CnV_REG(TPMN[tpmn],ch);    //保存
+//}
+//
+///*!
+// *  @brief      输入捕捉，清空计数器的值
+// *  @param      TPMn_e          模块号（TPM0、  TPM1、  TPM2）
+// *  @since      v5.0
+// */
+//void     FTM_input_clean (TPMn_e tpmn)
+//{
+//    ASSERT( tpmn < TPM_MAX);     //检查传递进来的通道是否正确
+//
+//    TPM_CNT_REG(TPMN[tpmn]) = 0;               //清 计数器计数值
+//}

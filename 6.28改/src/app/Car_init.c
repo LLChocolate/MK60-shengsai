@@ -15,9 +15,9 @@ void System_Init()
   getspeed2_init();
   myLED_Init();
   Motot1_Init();
-  Motot2_Init();
+  cmt_pwm_init(50,1500);
 //  FTM_PWM_init(FTM0,CH2,10000,30000);
-  myKEY_Exti_Init();
+  myKEY_Init();
 //  myKEY_Init();
   if(LCD_DISPLAY_FLAG==1)
   LCD_init(FALSE);
@@ -56,11 +56,20 @@ void System_Init()
 }
 void Parameters_init_CAR(void)
 {
+  u8 i;
   Switch_Status=dial_switch_Scan();
+  for(i=Far_Point;i<200;i++)
+  {
+    Image_hang.center[i] = 160;
+    Image_hang.halfwidth[i] = (i-Far_Point)*(80-24)*1.0/(Start_Point-Far_Point)+24;
+  }
+  Speed_stand=145;
+  PID_Init(&Servo_PID,5,0,1.5,0,0,150,-150);
   if((Switch_Status&3)==0)
   {
-    Speed_stand=145;
-    PID_Init(&Diff_PID,0.8,0,0.23,0,0,DIFF_UP,DIFF_DOWN);//30:0.08,40:0.09,50:0.13  limit:20
+    
+    PID_Init(&Diff_PID,0.8,0,0.23,0,0,Speed_stand,-Speed_stand);//30:0.08,40:0.09,50:0.13  limit:20
+
   }
   else if((Switch_Status&3)==1)
   {

@@ -58,6 +58,7 @@
 //#include "inv_mpu_dmp_motion_driver.h" 
 //#include "pacman.h"
 #include "filter.h"
+#include "cmt.h"
 
 /*************************************************************************
 *  模块名称：结构体和变量模块
@@ -141,5 +142,6 @@ extern u16 stand_AD_L;
 extern u16 stand_AD_R;
 extern u16 stand_AD;
 extern u8 TimeCnt_Start_Reduct_Flag;
-extern Beep_Str       Image_Island_Test_Beep;//测试摄像头环岛监测
+extern Beep_Str Image_Island_Test_Beep;//测试摄像头环岛监测
+extern PID_Struct Servo_PID;
 #endif  //__INCLUDE_H__

@@ -61,6 +61,10 @@
 #undef  VECTOR_084
 #define VECTOR_084    PIT0_IRQHandler     //重新定义84号中断为PIT0_IRQHandler中断
 
+  
+#undef  VECTOR_080
+#define VECTOR_080    FTM2_IRQHandler     //重新定义84号中断为PIT0_IRQHandler中断
+
 #undef  VECTOR_086
 #define VECTOR_086    PIT2_IRQHandler     //重新定义84号中断为PIT0_IRQHandler中断
 
@@ -106,6 +110,7 @@ extern void FTM0_IRQHandler();            //FTM0输入捕捉中断
 extern void FTM1_IRQHandler();            //FTM0输入捕捉中断
 extern void VSYNC_IRQ();
 extern void DMA0_IRQHandler();
+extern void FTM2_IRQHandler();
 
 #endif  //__ISR_H
 

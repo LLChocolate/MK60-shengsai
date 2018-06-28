@@ -107,6 +107,8 @@ void Speed_output(void)
     FTM_PWM_Duty(MOTOR_2,Duty_Motor2);
   }
 }
+
+
 void AD_new(void)
 {
   static u8  AD_Period = 0;
@@ -122,4 +124,11 @@ void AD_new(void)
   L_AD_Ave += L_AD[AD_Period];
   R_AD_Ave += R_AD[AD_Period];
   AD_Period++;  
+}
+
+void Servo_Diff_PID(void)
+{
+  Servo_PID.feedback = Diff_error;
+  Diff_PID_Process(&Servo_PID);
+  cmt_pwm_duty(Servo_PID.result+SERVO_MIDDLE);
 }

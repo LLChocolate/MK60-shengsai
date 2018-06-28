@@ -38,7 +38,14 @@ typedef struct{
   s16 Speed;
 }Motor_Status;          //电机状态结构体
 
+#define SERVO_MIDDLE    1480
 
+typedef struct
+{
+  u16 Middle;
+  u16 Now_duty;
+}
+Servo_Str;
 
 
 //ADC

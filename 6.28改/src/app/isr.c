@@ -394,12 +394,13 @@ void PIT0_IRQHandler()
   }
   
 //****************************************************测速函数
-  if(TimeCnt_5ms==2&&Blue_Start_Flag==1)//20ms执行一次
+  if(TimeCnt_5ms==2)//&&Blue_Start_Flag==1)//20ms执行一次
   {
     Get_speed1(&Motor1);
     Get_speed2(&Motor2);
     Speed_Control();
-    Speed_output();
+//    Speed_output();//暂时给固定pwm
+    Servo_Diff_PID();
     L_AD_Ave = ad_once(MYADC_2,ADC_12bit);
     R_AD_Ave = ad_once(MYADC_3,ADC_12bit);
 //  }
@@ -514,3 +515,7 @@ void FTM1_IRQHandler()
   
 }
 
+void FTM2_IRQHandler()
+{
+  
+}
