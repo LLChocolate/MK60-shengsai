@@ -1,0 +1,746 @@
+###############################################################################
+#
+# IAR ELF Linker V7.30.1.7746/W32 for ARM                 28/Jun/2018  10:33:04
+# Copyright 2007-2014 IAR Systems AB.
+#
+#    Output file  =  
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Exe\fire_gpio_demo.out
+#    Map file     =  
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\List\fire_gpio_demo.map
+#    Command line =  
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\adc.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\alloc.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\arm_cm4.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\assert.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\beep.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\Car_init.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\crt0.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\define.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\delay.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\dial_switch.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\dma.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\exti.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\filter.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\FTM.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\getspeed.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\gpio.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\i2c.o
+#        D:\MK60-shengsai\6.28改\src\LIB\CMSIS\iar_cortexM4l_math.a
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\image_process.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\io.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\isr.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\ISR_FUN.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\LCD.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\LED.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\lptmr.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\main.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\mcg.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\memtest.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\MK60_spi.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\mykey.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\mymath.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\myPWM.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\OV7725.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\pid.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\PIT.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\port.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\printf.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\queue.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\SCCB.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\sdhc.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\start.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\startup.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\stdlib.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\sysinit.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\uart.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\uif.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\vectors.o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj\wdog.o -o
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Exe\fire_gpio_demo.out
+#        --map
+#        D:\MK60-shengsai\6.28改\build\fire_demo\Debug\List\fire_gpio_demo.map
+#        --config "D:\MK60-shengsai\6.28改\build\fire_demo\..\config
+#        files\fire_ROM_K60N512.icf" --semihosting --entry __iar_program_start
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.0\arm\CMSIS\Lib\IAR\iar_cortexM4l_math.a" --vfe
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A1":  place at 0x00000000 { ro section .intvec };
+"A2":  place at 0x00000410 { ro section .noinit };
+"P1":  place in [from 0x00000000 to 0x00040000] { ro, block CodeRelocate };
+"P2":  place in [from 0x1fff0410 to 0x20010000] {
+          rw, block CodeRelocateRam, block CSTACK, block HEAP };
+
+  Section              Kind        Address    Size  Object
+  -------              ----        -------    ----  ------
+"A1":                                        0x410
+  .intvec              const    0x00000000   0x410  vectors.o [1]
+                              - 0x00000410   0x410
+
+"P1", part 1 of 2:                             0x0
+  .rodata              const    0x00000410     0x0  zero_init3.o [5]
+
+"A2":                                         0x3c
+  .noinit              ro code  0x00000410    0x3c  crt0.o [1]
+                              - 0x0000044c    0x3c
+
+"P1", part 2 of 2:                          0xa044
+  .text                ro code  0x0000044c  0x36bc  image_process.o [1]
+  .text                ro code  0x00003b08   0xcb2  LCD.o [1]
+  .text                ro code  0x000047ba    0x22  zero_init3.o [5]
+  .text                ro code  0x000047dc    0x2c  I32ToDbl.o [4]
+  .text                ro code  0x00004808   0x246  DblDiv.o [4]
+  .text                ro code  0x00004a50    0x4c  DblToI32.o [4]
+  .text                ro code  0x00004a9c   0x1a2  DblMul.o [4]
+  .text                ro code  0x00004c40    0xe8  DblAdd.o [4]
+  .text                ro code  0x00004d28    0x32  I32ToFlt.o [4]
+  .text                ro code  0x00004d5c    0x36  filter.o [1]
+  .text                ro code  0x00004d94    0x44  FltToS32.o [4]
+  .text                ro code  0x00004dd8    0x82  mymath.o [1]
+  .text                ro code  0x00004e5c   0x180  DblSub.o [4]
+  .text                ro code  0x00004fdc   0x10c  gpio.o [1]
+  .text                ro code  0x000050e8    0x24  delay.o [1]
+  .text                ro code  0x0000510c    0xd8  FltMul.o [4]
+  .text                ro code  0x000051e4    0xe6  FltSub.o [4]
+  .text                ro code  0x000052cc    0x84  FltAdd.o [4]
+  .text                ro code  0x00005350    0x18  assert.o [1]
+  .text                ro code  0x00005368   0x564  printf.o [1]
+  .text                ro code  0x000058cc    0x20  stdlib.o [1]
+  .data_init                    0x000058ec   0xcf0  <Block>
+    Initializer bytes  ro data  0x000058ec   0xcf0  <for .data-1>
+  .text                ro code  0x000065dc   0x822  isr.o [1]
+  .text                ro code  0x00006e00   0x344  dma.o [1]
+  .text                ro code  0x00007144   0x128  arm_cm4.o [1]
+  .text                ro code  0x0000726c   0x2c8  uart.o [1]
+  .text                ro code  0x00007534    0x60  beep.o [1]
+  .text                ro code  0x00007594   0x218  getspeed.o [1]
+  .text                ro code  0x000077ac   0x3ac  ISR_FUN.o [1]
+  .text                ro code  0x00007b58   0x386  adc.o [1]
+  .text                ro code  0x00007ee0    0x4e  FltToDbl.o [4]
+  .text                ro code  0x00007f30    0x90  DblToFlt.o [4]
+  .text                ro code  0x00007fc0   0x130  pid.o [1]
+  .text                ro code  0x000080f0   0x3d8  FTM.o [1]
+  .text                ro code  0x000084c8    0x24  FltCmpLe.o [4]
+  .text                ro code  0x000084ec   0x520  start.o [1]
+  .text                ro code  0x00008a0c    0x38  wdog.o [1]
+  .text                ro code  0x00008a44    0xc0  startup.o [1]
+  .text                ro code  0x00008b04    0x5c  sysinit.o [1]
+  .text                ro code  0x00008b60   0x29c  main.o [1]
+  Veneer               ro code  0x00008dfc     0x8  - Linker created -
+  .text                ro code  0x00008e04   0x2f4  mcg.o [1]
+  .text                ro code  0x000090f8   0x318  Car_init.o [1]
+  .text                ro code  0x00009410   0x1e4  OV7725.o [1]
+  .text                ro code  0x000095f4    0x70  PIT.o [1]
+  .text                ro code  0x00009664   0x100  dial_switch.o [1]
+  .text                ro code  0x00009764    0x1c  LED.o [1]
+  .text                ro code  0x00009780    0x3c  myPWM.o [1]
+  .text                ro code  0x000097bc    0x22  mykey.o [1]
+  .text                ro code  0x000097e0    0x58  port.o [1]
+  .text                ro code  0x00009838   0x40a  SCCB.o [1]
+  .text                ro code  0x00009c44    0x6c  exti.o [1]
+  CodeRelocate                  0x00009cb0    0x50  <Block>
+    Initializer bytes  ro data  0x00009cb0    0x50  <for CodeRelocateRam-1>
+  .rodata              const    0x00009d00    0x4c  assert.o [1]
+  .rodata              const    0x00009d4c    0x48  start.o [1]
+  .rodata              const    0x00009d94    0x40  start.o [1]
+  .rodata              const    0x00009dd4    0x3c  arm_cm4.o [1]
+  .rodata              const    0x00009e10    0x38  arm_cm4.o [1]
+  .rodata              const    0x00009e48    0x30  adc.o [1]
+  .rodata              const    0x00009e78    0x30  dma.o [1]
+  .rodata              const    0x00009ea8    0x30  FTM.o [1]
+  .rodata              const    0x00009ed8    0x30  gpio.o [1]
+  .rodata              const    0x00009f08    0x2c  start.o [1]
+  .rodata              const    0x00009f34    0x28  start.o [1]
+  .rodata              const    0x00009f5c    0x28  start.o [1]
+  .text                ro code  0x00009f84    0x28  data_init.o [5]
+  .rodata              const    0x00009fac    0x24  OV7725.o [1]
+  .iar.init_table      const    0x00009fd0    0x10  - Linker created -
+  .rodata              const    0x00009fe0    0x20  OV7725.o [1]
+  .rodata              const    0x0000a000    0x20  OV7725.o [1]
+  .rodata              const    0x0000a020    0x20  start.o [1]
+  .rodata              const    0x0000a040    0x20  start.o [1]
+  .rodata              const    0x0000a060    0x20  start.o [1]
+  .rodata              const    0x0000a080    0x20  start.o [1]
+  .rodata              const    0x0000a0a0    0x20  start.o [1]
+  .rodata              const    0x0000a0c0    0x1c  start.o [1]
+  .rodata              const    0x0000a0dc    0x1c  start.o [1]
+  .rodata              const    0x0000a0f8    0x1c  start.o [1]
+  .text                ro code  0x0000a114    0x1a  cmain.o [5]
+  .text                ro code  0x0000a12e     0x4  low_level_init.o [3]
+  .text                ro code  0x0000a132     0x4  exit.o [3]
+  .text                ro code  0x0000a138     0xa  cexit.o [5]
+  .text                ro code  0x0000a144    0x14  exit.o [6]
+  .rodata              const    0x0000a158    0x18  OV7725.o [1]
+  .rodata              const    0x0000a170    0x18  start.o [1]
+  .rodata              const    0x0000a188    0x18  start.o [1]
+  .rodata              const    0x0000a1a0    0x18  start.o [1]
+  .rodata              const    0x0000a1b8    0x18  start.o [1]
+  .rodata              const    0x0000a1d0    0x18  start.o [1]
+  .rodata              const    0x0000a1e8    0x18  start.o [1]
+  .rodata              const    0x0000a200    0x18  start.o [1]
+  .rodata              const    0x0000a218    0x18  start.o [1]
+  .rodata              const    0x0000a230    0x14  OV7725.o [1]
+  .rodata              const    0x0000a244    0x14  start.o [1]
+  .rodata              const    0x0000a258    0x14  start.o [1]
+  .rodata              const    0x0000a26c    0x14  start.o [1]
+  .rodata              const    0x0000a280    0x14  start.o [1]
+  .rodata              const    0x0000a294    0x14  start.o [1]
+  .rodata              const    0x0000a2a8    0x14  start.o [1]
+  .rodata              const    0x0000a2bc    0x14  start.o [1]
+  .rodata              const    0x0000a2d0    0x14  start.o [1]
+  .rodata              const    0x0000a2e4    0x10  isr.o [1]
+  .rodata              const    0x0000a2f4    0x10  isr.o [1]
+  .rodata              const    0x0000a304    0x10  OV7725.o [1]
+  .rodata              const    0x0000a314    0x10  start.o [1]
+  .rodata              const    0x0000a324    0x10  start.o [1]
+  .rodata              const    0x0000a334    0x10  start.o [1]
+  .rodata              const    0x0000a344    0x10  start.o [1]
+  .rodata              const    0x0000a354    0x10  start.o [1]
+  .rodata              const    0x0000a364    0x10  start.o [1]
+  .rodata              const    0x0000a374    0x10  start.o [1]
+  .rodata              const    0x0000a384    0x10  start.o [1]
+  .rodata              const    0x0000a394    0x10  start.o [1]
+  .rodata              const    0x0000a3a4    0x10  start.o [1]
+  .rodata              const    0x0000a3b4    0x10  start.o [1]
+  .rodata              const    0x0000a3c4    0x10  start.o [1]
+  .rodata              const    0x0000a3d4    0x10  start.o [1]
+  .text                ro code  0x0000a3e4    0x10  io.o [1]
+  .rodata              const    0x0000a3f4     0xc  start.o [1]
+  .rodata              const    0x0000a400     0xc  start.o [1]
+  .rodata              const    0x0000a40c     0xc  start.o [1]
+  .rodata              const    0x0000a418     0xc  start.o [1]
+  .text                ro code  0x0000a424     0xc  cstartup_M.o [5]
+  .rodata              const    0x0000a430     0x8  image_process.o [1]
+  .rodata              const    0x0000a438     0x8  image_process.o [1]
+  .rodata              const    0x0000a440     0x8  isr.o [1]
+  .rodata              const    0x0000a448     0x8  start.o [1]
+  .rodata              const    0x0000a450     0x8  start.o [1]
+  .rodata              const    0x0000a458     0x8  start.o [1]
+  .rodata              const    0x0000a460     0x8  start.o [1]
+  .rodata              const    0x0000a468     0x8  start.o [1]
+  .rodata              const    0x0000a470     0x8  start.o [1]
+  .rodata              const    0x0000a478     0x8  start.o [1]
+  .rodata              const    0x0000a480     0x8  start.o [1]
+  .text                ro code  0x0000a488     0x8  vectors.o [1]
+                              - 0x0000a490  0xa044
+
+"P2":                                       0x6990
+  .data                         0x1fff0410   0xcf0  <Block>
+    .data-1                     0x1fff0410   0xcf0  <Init block>
+      .data            inited   0x1fff0410     0x8  adc.o [1]
+      .data            inited   0x1fff0418     0x4  beep.o [1]
+      .data            inited   0x1fff041c     0xc  FTM.o [1]
+      .data            inited   0x1fff0428    0x14  gpio.o [1]
+      .data            inited   0x1fff043c    0x14  gpio.o [1]
+      .data            inited   0x1fff0450    0x14  image_process.o [1]
+      .data            inited   0x1fff0464     0x8  image_process.o [1]
+      .data            inited   0x1fff046c    0x48  image_process.o [1]
+      .data            inited   0x1fff04b4     0xc  image_process.o [1]
+      .data            inited   0x1fff04c0     0x1  isr.o [1]
+      .data            inited   0x1fff04c4   0x800  LCD.o [1]
+      .data            inited   0x1fff0cc4   0x36c  LCD.o [1]
+      .data            inited   0x1fff1030     0x4  main.o [1]
+      .data            inited   0x1fff1034     0x4  main.o [1]
+      .data            inited   0x1fff1038     0x2  main.o [1]
+      .data            inited   0x1fff103a     0x1  main.o [1]
+      .data            inited   0x1fff103b     0x1  main.o [1]
+      .data            inited   0x1fff103c     0x1  main.o [1]
+      .data            inited   0x1fff1040     0x4  main.o [1]
+      .data            inited   0x1fff1044     0x4  main.o [1]
+      .data            inited   0x1fff1048     0x4  main.o [1]
+      .data            inited   0x1fff104c     0x4  main.o [1]
+      .data            inited   0x1fff1050     0x4  main.o [1]
+      .data            inited   0x1fff1054     0x4  main.o [1]
+      .data            inited   0x1fff1058     0x1  main.o [1]
+      .data            inited   0x1fff105c     0x4  main.o [1]
+      .data            inited   0x1fff1060     0x4  main.o [1]
+      .data            inited   0x1fff1064     0x1  main.o [1]
+      .data            inited   0x1fff1068     0x4  main.o [1]
+      .data            inited   0x1fff106c     0x2  main.o [1]
+      .data            inited   0x1fff106e     0x2  main.o [1]
+      .data            inited   0x1fff1070     0x2  main.o [1]
+      .data            inited   0x1fff1074     0x8  mcg.o [1]
+      .data            inited   0x1fff107c     0x1  OV7725.o [1]
+      .data            inited   0x1fff107d     0x1  OV7725.o [1]
+      .data            inited   0x1fff1080    0x64  OV7725.o [1]
+      .data            inited   0x1fff10e4     0x1  OV7725.o [1]
+      .data            inited   0x1fff10e8    0x18  uart.o [1]
+  CodeRelocateRam               0x1fff1100    0x50  <Block>
+    CodeRelocateRam-1           0x1fff1100    0x50  <Init block>
+      .textrw          inited   0x1fff1100    0x50  mcg.o [1]
+  .bss                          0x1fff1150  0x5c50  <Block>
+    .bss               zero     0x1fff1150    0x10  adc.o [1]
+    .bss               zero     0x1fff1160   0x140  image_process.o [1]
+    .bss               zero     0x1fff12a0   0xe14  image_process.o [1]
+    .bss               zero     0x1fff20b4    0x14  image_process.o [1]
+    .bss               zero     0x1fff20c8    0x14  image_process.o [1]
+    .bss               zero     0x1fff20dc     0x4  isr.o [1]
+    .bss               zero     0x1fff20e0     0x8  isr.o [1]
+    .bss               zero     0x1fff20e8     0x4  isr.o [1]
+    .bss               zero     0x1fff20ec     0x4  isr.o [1]
+    .bss               zero     0x1fff20f0     0x4  isr.o [1]
+    .bss               zero     0x1fff20f4     0x4  ISR_FUN.o [1]
+    .bss               zero     0x1fff20f8    0x14  ISR_FUN.o [1]
+    .bss               zero     0x1fff210c    0x14  ISR_FUN.o [1]
+    .bss               zero     0x1fff2120    0x28  ISR_FUN.o [1]
+    .bss               zero     0x1fff2148     0x4  main.o [1]
+    .bss               zero     0x1fff214c     0x4  main.o [1]
+    .bss               zero     0x1fff2150     0x4  main.o [1]
+    .bss               zero     0x1fff2154     0x4  main.o [1]
+    .bss               zero     0x1fff2158     0x4  main.o [1]
+    .bss               zero     0x1fff215c     0x4  main.o [1]
+    .bss               zero     0x1fff2160     0x4  main.o [1]
+    .bss               zero     0x1fff2164     0x4  main.o [1]
+    .bss               zero     0x1fff2168    0x38  main.o [1]
+    .bss               zero     0x1fff21a0    0x38  main.o [1]
+    .bss               zero     0x1fff21d8    0x38  main.o [1]
+    .bss               zero     0x1fff2210     0x4  main.o [1]
+    .bss               zero     0x1fff2214     0x4  main.o [1]
+    .bss               zero     0x1fff2218     0x4  main.o [1]
+    .bss               zero     0x1fff221c     0x4  main.o [1]
+    .bss               zero     0x1fff2220     0x4  main.o [1]
+    .bss               zero     0x1fff2224     0x4  main.o [1]
+    .bss               zero     0x1fff2228  0x25a8  OV7725.o [1]
+    .bss               zero     0x1fff47d0  0x25a8  OV7725.o [1]
+    .bss               zero     0x1fff6d78     0x4  OV7725.o [1]
+    .bss               zero     0x1fff6d7c     0x4  sysinit.o [1]
+    .bss               zero     0x1fff6d80     0x4  sysinit.o [1]
+    .bss               zero     0x1fff6d84     0x4  sysinit.o [1]
+    .bss               zero     0x1fff6d88     0x2  LCD.o [1]
+    .bss               zero     0x1fff6d8a     0x2  LCD.o [1]
+    .bss               zero     0x1fff6d8c     0x2  main.o [1]
+    .bss               zero     0x1fff6d8e     0x1  image_process.o [1]
+    .bss               zero     0x1fff6d8f     0x1  image_process.o [1]
+    .bss               zero     0x1fff6d90     0x1  image_process.o [1]
+    .bss               zero     0x1fff6d91     0x1  image_process.o [1]
+    .bss               zero     0x1fff6d92     0x1  image_process.o [1]
+    .bss               zero     0x1fff6d93     0x1  isr.o [1]
+    .bss               zero     0x1fff6d94     0x1  isr.o [1]
+    .bss               zero     0x1fff6d95     0x1  isr.o [1]
+    .bss               zero     0x1fff6d96     0x1  ISR_FUN.o [1]
+    .bss               zero     0x1fff6d97     0x1  ISR_FUN.o [1]
+    .bss               zero     0x1fff6d98     0x1  main.o [1]
+    .bss               zero     0x1fff6d99     0x1  main.o [1]
+    .bss               zero     0x1fff6d9a     0x1  main.o [1]
+    .bss               zero     0x1fff6d9b     0x1  main.o [1]
+    .bss               zero     0x1fff6d9c     0x1  main.o [1]
+    .bss               zero     0x1fff6d9d     0x1  main.o [1]
+    .bss               zero     0x1fff6d9e     0x1  main.o [1]
+                              - 0x1fff6da0  0x6990
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x5c4f:
+          0x1fff1150  0x5c4f
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  rw code  ro data  rw data
+    ------            -------  -------  -------  -------
+D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj: [1]
+    Car_init.o            792
+    FTM.o                 984                60       12
+    ISR_FUN.o             940                         86
+    LCD.o               3 250             2 927    2 928
+    LED.o                  28
+    OV7725.o              484               265   19 387
+    PIT.o                 112
+    SCCB.o              1 034
+    adc.o                 902                56       24
+    arm_cm4.o             296               116
+    assert.o               24                76
+    beep.o                 96                 4        4
+    crt0.o                 60
+    delay.o                36
+    dial_switch.o         256
+    dma.o                 836                48
+    exti.o                108
+    filter.o               54
+    getspeed.o            536
+    gpio.o                268                88       40
+    image_process.o    14 012               128    4 081
+    io.o                   16
+    isr.o               2 082                41       28
+    main.o                668                66      290
+    mcg.o                 756       80       90        8
+    myPWM.o                60
+    mykey.o                34
+    mymath.o              130
+    pid.o                 304
+    port.o                 88
+    printf.o            1 380
+    start.o             1 312             1 176
+    startup.o             192
+    stdlib.o               32
+    sysinit.o              92                         12
+    uart.o                712                27       24
+    vectors.o               8             1 040
+    wdog.o                 56
+    ----------------------------------------------------
+    Total:             33 030       80    6 208   26 924
+
+command line: [2]
+    ----------------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    exit.o                  4
+    low_level_init.o        4
+    ----------------------------------------------------
+    Total:                  8
+
+m7M_tl.a: [4]
+    DblAdd.o              232
+    DblDiv.o              582
+    DblMul.o              418
+    DblSub.o              384
+    DblToFlt.o            144
+    DblToI32.o             76
+    FltAdd.o              132
+    FltCmpLe.o             36
+    FltMul.o              216
+    FltSub.o              230
+    FltToDbl.o             78
+    FltToS32.o             68
+    I32ToDbl.o             44
+    I32ToFlt.o             50
+    ----------------------------------------------------
+    Total:              2 690
+
+rt7M_tl.a: [5]
+    cexit.o                10
+    cmain.o                26
+    cstartup_M.o           12
+    data_init.o            40
+    zero_init3.o           34
+    ----------------------------------------------------
+    Total:                122
+
+shb_l.a: [6]
+    exit.o                 20
+    ----------------------------------------------------
+    Total:                 20
+
+    Gaps                   26                         19
+    Linker created          8                16
+--------------------------------------------------------
+    Grand Total:       35 904       80    6 224   26 943
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address    Size  Type      Object
+-----                      -------    ----  ----      ------
+.bss$$Base              0x1fff1150           --   Gb  - Linker created -
+.bss$$Limit             0x1fff6da0           --   Gb  - Linker created -
+.data$$Base             0x1fff0410           --   Gb  - Linker created -
+.data$$Limit            0x1fff1100           --   Gb  - Linker created -
+.data_init$$Base        0x000058ec           --   Gb  - Linker created -
+.data_init$$Limit       0x000065dc           --   Gb  - Linker created -
+?main                   0x0000a115          Code  Gb  cmain.o [5]
+ADCx                    0x1fff0410     0x8  Data  Gb  adc.o [1]
+ASSERT_FAILED_STR       0x00009d00    0x4c  Data  Gb  assert.o [1]
+Acc_K                   0x1fff1068     0x4  Data  Gb  main.o [1]
+Acc_Limit               0x1fff1064     0x1  Data  Gb  main.o [1]
+BEEP_Open_once          0x00007549    0x22  Code  Gb  beep.o [1]
+Back_Color              0x1fff6d8a     0x2  Data  Gb  LCD.o [1]
+Beep_ISR                0x0000756b    0x24  Code  Gb  beep.o [1]
+Blue_Start_Flag         0x1fff6d9c     0x1  Data  Gb  main.o [1]
+Brush_Color             0x1fff6d88     0x2  Data  Gb  LCD.o [1]
+Center_Filter           0x1fff0450    0x14  Data  Gb  image_process.o [1]
+CenterlineToDiff        0x00000d57    0x58  Code  Gb  image_process.o [1]
+CodeRelocate$$Base      0x00009cb0           --   Gb  - Linker created -
+CodeRelocate$$Limit     0x00009d00           --   Gb  - Linker created -
+CodeRelocateRam$$Base   0x1fff1100           --   Gb  - Linker created -
+CodeRelocateRam$$Limit  0x1fff1150           --   Gb  - Linker created -
+Cross                   0x1fff04b4     0xc  Data  Gb  image_process.o [1]
+Cross_center_test       0x0000340d   0x322  Code  Gb  image_process.o [1]
+Cross_curve_test        0x00002e4d   0x5ba  Code  Gb  image_process.o [1]
+Cross_pre_test          0x00003755   0x30c  Code  Gb  image_process.o [1]
+Cross_process           0x000029d5    0x26  Code  Gb  image_process.o [1]
+DIFF_DOWN               0x1fff1060     0x4  Data  Gb  main.o [1]
+DIFF_PID_CHANGE_FLAG    0x1fff6d9e     0x1  Data  Gb  main.o [1]
+DIFF_UP                 0x1fff105c     0x4  Data  Gb  main.o [1]
+DMA0_IRQHandler         0x000066b1    0x5c  Code  Gb  isr.o [1]
+DMA_PORTx2BUFF_Init     0x00006e01   0x30a  Code  Gb  dma.o [1]
+D_TEMP1                 0x1fff2220     0x4  Data  Gb  main.o [1]
+D_TEMP2                 0x1fff2224     0x4  Data  Gb  main.o [1]
+Diff_PID                0x1fff21d8    0x38  Data  Gb  main.o [1]
+Diff_PID_Process        0x0000804f    0x50  Code  Gb  pid.o [1]
+Diff_PID_ave            0x1fff20f4     0x4  Data  Gb  ISR_FUN.o [1]
+Diff_error              0x1fff2210     0x4  Data  Gb  main.o [1]
+Disp_single_colour      0x00004301    0x34  Code  Gb  LCD.o [1]
+Duty_Motor1             0x1fff2160     0x4  Data  Gb  main.o [1]
+Duty_Motor2             0x1fff2164     0x4  Data  Gb  main.o [1]
+Elec_Island             0x00000e3f    0x8e  Code  Gb  image_process.o [1]
+FTM0_IRQHandler         0x00006dfb     0x2  Code  Gb  isr.o [1]
+FTM1_IRQHandler         0x00006dfd     0x2  Code  Gb  isr.o [1]
+FTM_PWM_Duty            0x0000840b    0x76  Code  Gb  FTM.o [1]
+FTM_PWM_init            0x000080f1   0x31a  Code  Gb  FTM.o [1]
+FTMx                    0x1fff041c     0xc  Data  Gb  FTM.o [1]
+Font8x16                0x1fff04c4   0x800  Data  Gb  LCD.o [1]
+GPIOx                   0x1fff0428    0x14  Data  Gb  gpio.o [1]
+Get_speed1              0x000076c5    0x4a  Code  Gb  getspeed.o [1]
+Get_speed2              0x0000770f    0x4c  Code  Gb  getspeed.o [1]
+HardFault_Handler       0x0000670f     0x2  Code  Gb  isr.o [1]
+I_TEMP1                 0x1fff1044     0x4  Data  Gb  main.o [1]
+I_TEMP2                 0x1fff104c     0x4  Data  Gb  main.o [1]
+ImageData               0x1fff1160   0x140  Data  Gb  image_process.o [1]
+Image_Flag              0x1fff1058     0x1  Data  Gb  main.o [1]
+Image_Island_Test       0x00001ab5   0x368  Code  Gb  image_process.o [1]
+Image_Island_Test_Beep  0x1fff0418     0x4  Data  Gb  beep.o [1]
+Image_fire              0x1fff6d78     0x4  Data  Gb  OV7725.o [1]
+Image_fire_Memory1      0x1fff2228  0x25a8  Data  Gb  OV7725.o [1]
+Image_fire_Memory2      0x1fff47d0  0x25a8  Data  Gb  OV7725.o [1]
+Image_hang              0x1fff12a0   0xe14  Data  Gb  image_process.o [1]
+Image_lie               0x1fff0464     0x8  Data  Gb  image_process.o [1]
+In_Cross                0x00002a35   0x40a  Code  Gb  image_process.o [1]
+In_Cross_test           0x000029fb    0x34  Code  Gb  image_process.o [1]
+In_Island               0x00000eed   0x3a4  Code  Gb  image_process.o [1]
+In_Island_center        0x000012a9   0x2be  Code  Gb  image_process.o [1]
+Island                  0x1fff046c    0x48  Data  Gb  image_process.o [1]
+Island_process          0x00000e25    0x1a  Code  Gb  image_process.o [1]
+Key_Start_Flag          0x1fff6d9d     0x1  Data  Gb  main.o [1]
+Key_status              0x1fff6d99     0x1  Data  Gb  main.o [1]
+LCD_DISPLAY_FLAG        0x1fff103b     0x1  Data  Gb  main.o [1]
+LCD_DrawBigPoint        0x00004787    0x34  Code  Gb  LCD.o [1]
+LCD_DrawPoint           0x00004763    0x24  Code  Gb  LCD.o [1]
+LCD_Draw_Line           0x000046a5    0xbe  Code  Gb  LCD.o [1]
+LCD_PORT_init           0x00003b09    0x34  Code  Gb  LCD.o [1]
+LCD_PutChar             0x00004169    0x28  Code  Gb  LCD.o [1]
+LCD_PutChar8x16         0x000041f1    0x6c  Code  Gb  LCD.o [1]
+LCD_PutString           0x00004191    0x60  Code  Gb  LCD.o [1]
+LCD_Put_Int             0x00004339   0x306  Code  Gb  LCD.o [1]
+LCD_SetPos              0x0000410b    0x5e  Code  Gb  LCD.o [1]
+LCD_init                0x00003b3d   0x23c  Code  Gb  LCD.o [1]
+L_AD_Ave                0x1fff2148     0x4  Data  Gb  main.o [1]
+MY_adc_init             0x00007e9b    0x44  Code  Gb  adc.o [1]
+Master_Adc_Config       0x1fff1150    0x10  Data  Gb  adc.o [1]
+Master_Speed            0x1fff1038     0x2  Data  Gb  main.o [1]
+Memory_use_Flag         0x1fff107c     0x1  Data  Gb  OV7725.o [1]
+Motor1                  0x1fff2150     0x4  Data  Gb  main.o [1]
+Motor1_PID              0x1fff2168    0x38  Data  Gb  main.o [1]
+Motor2                  0x1fff2154     0x4  Data  Gb  main.o [1]
+Motor2_PID              0x1fff21a0    0x38  Data  Gb  main.o [1]
+Motor_enable_Flag       0x1fff103c     0x1  Data  Gb  main.o [1]
+Motot1_Init             0x00009781    0x1e  Code  Gb  myPWM.o [1]
+Motot2_Init             0x0000979f    0x1e  Code  Gb  myPWM.o [1]
+Out_Island              0x00001691   0x406  Code  Gb  image_process.o [1]
+Out_Island_Test         0x00001f2d   0x318  Code  Gb  image_process.o [1]
+Ov7725_Init             0x000094e1    0x12  Code  Gb  OV7725.o [1]
+Ov7725_exti_Init        0x00009411    0xb8  Code  Gb  OV7725.o [1]
+Ov7725_reg_Init         0x000094f3    0xbe  Code  Gb  OV7725.o [1]
+PID_Init                0x0000809f    0x52  Code  Gb  pid.o [1]
+PID_process             0x00007fc1    0x8e  Code  Gb  pid.o [1]
+PIT0_IRQHandler         0x00006a65   0x21c  Code  Gb  isr.o [1]
+PIT2_IRQHandler         0x00006c8f     0xe  Code  Gb  isr.o [1]
+PIT3_IRQHandler         0x00006c81     0xe  Code  Gb  isr.o [1]
+PORTA_IRQHandler        0x00006c9f    0x48  Code  Gb  isr.o [1]
+PORTB_IRQHandler        0x00006ce7    0x26  Code  Gb  isr.o [1]
+PORTC_IRQHandler        0x00006c9d     0x2  Code  Gb  isr.o [1]
+PORTE_IRQHandler        0x00006df9     0x2  Code  Gb  isr.o [1]
+PORTX                   0x1fff043c    0x14  Data  Gb  gpio.o [1]
+P_TEMP1                 0x1fff1040     0x4  Data  Gb  main.o [1]
+P_TEMP2                 0x1fff1048     0x4  Data  Gb  main.o [1]
+Parameters_init_CAR     0x000091cd   0x1c8  Code  Gb  Car_init.o [1]
+PendSV_Handler          0x0000670d     0x2  Code  Gb  isr.o [1]
+PutGB1616               0x0000425d    0xa4  Code  Gb  LCD.o [1]
+R_AD_Ave                0x1fff214c     0x4  Data  Gb  main.o [1]
+Reduct_Flag             0x1fff6d9b     0x1  Data  Gb  main.o [1]
+Region$$Table$$Base     0x00009fd0           --   Gb  - Linker created -
+Region$$Table$$Limit    0x00009fe0           --   Gb  - Linker created -
+Reset_Handler           0x00000411          Code  Gb  crt0.o [1]
+SCCB_Ack                0x00009959    0x4c  Code  Lc  SCCB.o [1]
+SCCB_GPIO_init          0x00009853    0x1c  Code  Gb  SCCB.o [1]
+SCCB_NoAck              0x000099a5    0x4c  Code  Lc  SCCB.o [1]
+SCCB_ReadByte           0x00009bbd    0x86  Code  Gb  SCCB.o [1]
+SCCB_ReceiveByte        0x00009ae3    0x84  Code  Lc  SCCB.o [1]
+SCCB_SendByte           0x00009a79    0x6a  Code  Lc  SCCB.o [1]
+SCCB_Start              0x0000986f    0xaa  Code  Lc  SCCB.o [1]
+SCCB_Stop               0x00009919    0x40  Code  Lc  SCCB.o [1]
+SCCB_WaitAck            0x000099f1    0x88  Code  Lc  SCCB.o [1]
+SCCB_WriteByte          0x00009b75    0x48  Code  Gb  SCCB.o [1]
+SCCB_delay              0x00009839    0x1a  Code  Lc  SCCB.o [1]
+Send_Image_to_LCD       0x00004649    0x58  Code  Gb  LCD.o [1]
+Slow_Flag               0x1fff6d9a     0x1  Data  Gb  main.o [1]
+Speed_Control           0x000077ad    0xbe  Code  Gb  ISR_FUN.o [1]
+Speed_L_sum             0x1fff2158     0x4  Data  Gb  main.o [1]
+Speed_R_sum             0x1fff215c     0x4  Data  Gb  main.o [1]
+Speed_goal1             0x1fff1030     0x4  Data  Gb  main.o [1]
+Speed_goal1_TEMP        0x1fff1050     0x4  Data  Gb  main.o [1]
+Speed_goal2             0x1fff1034     0x4  Data  Gb  main.o [1]
+Speed_goal2_TEMP        0x1fff1054     0x4  Data  Gb  main.o [1]
+Speed_output            0x0000786b   0x27a  Code  Gb  ISR_FUN.o [1]
+Speed_stand             0x1fff6d8c     0x2  Data  Gb  main.o [1]
+Stay2Out_test           0x00002255   0x304  Code  Gb  image_process.o [1]
+Stay_Island             0x0000156d   0x112  Code  Gb  image_process.o [1]
+Str_Cross               0x00003a61    0x96  Code  Gb  image_process.o [1]
+Str_Cross_Test          0x00000daf    0x54  Code  Gb  image_process.o [1]
+Switch_Status           0x1fff6d98     0x1  Data  Gb  main.o [1]
+SysTick_Handler         0x00006711     0x2  Code  Gb  isr.o [1]
+System_Init             0x000090f9    0xd4  Code  Gb  Car_init.o [1]
+Test_Far_Lie            0x00001e21    0xf8  Code  Gb  image_process.o [1]
+TimeCnt_Start_Reduct_Flag
+                        0x1fff04c0     0x1  Data  Gb  isr.o [1]
+Time_1ms                0x1fff2214     0x4  Data  Gb  main.o [1]
+UARTx                   0x1fff10e8    0x18  Data  Gb  uart.o [1]
+USART1_IRQHandler       0x00006713     0x2  Code  Gb  isr.o [1]
+USART2_IRQHandler       0x00006715     0x2  Code  Gb  isr.o [1]
+USART3_IRQHandler       0x00006717     0x2  Code  Gb  isr.o [1]
+USART5_IRQHandler       0x00006719   0x346  Code  Gb  isr.o [1]
+VSYNC_IRQ               0x000065dd    0xd4  Code  Gb  isr.o [1]
+Wait_Next_Island        0x00002559    0xda  Code  Gb  image_process.o [1]
+Wait_Next_center        0x00002639   0x39c  Code  Gb  image_process.o [1]
+__BOOT_STACK_ADDRESS {Abs}
+                        0x2000fff8           --   Gb  command line/config [2]
+__VECTOR_RAM {Abs}      0x1fff0000           --   Gb  command line/config [2]
+__VECTOR_TABLE {Abs}    0x00000000           --   Gb  command line/config [2]
+__aeabi_cfcmple         0x000084c9          Code  Gb  FltCmpLe.o [4]
+__aeabi_d2f             0x00007f31          Code  Gb  DblToFlt.o [4]
+__aeabi_d2iz            0x00004a51          Code  Gb  DblToI32.o [4]
+__aeabi_dadd            0x00004c41          Code  Gb  DblAdd.o [4]
+__aeabi_ddiv            0x00004809          Code  Gb  DblDiv.o [4]
+__aeabi_dmul            0x00004a9d          Code  Gb  DblMul.o [4]
+__aeabi_dsub            0x00004e5d          Code  Gb  DblSub.o [4]
+__aeabi_f2d             0x00007ee1          Code  Gb  FltToDbl.o [4]
+__aeabi_f2iz            0x00004d95          Code  Gb  FltToS32.o [4]
+__aeabi_fadd            0x000052cd          Code  Gb  FltAdd.o [4]
+__aeabi_fmul            0x0000510d          Code  Gb  FltMul.o [4]
+__aeabi_fsub            0x000051e5          Code  Gb  FltSub.o [4]
+__aeabi_i2d             0x000047dd          Code  Gb  I32ToDbl.o [4]
+__aeabi_i2f             0x00004d29          Code  Gb  I32ToFlt.o [4]
+__aeabi_ui2f            0x00004d3d          Code  Gb  I32ToFlt.o [4]
+__cmain                 0x0000a115          Code  Gb  cmain.o [5]
+__code_start__ {Abs}    0x00000410           --   Gb  command line/config [2]
+__exit                  0x0000a145    0x14  Code  Gb  exit.o [6]
+__iar_d2uiz             0x00004a7d          Code  Gb  DblToI32.o [4]
+__iar_dadd              0x00004c55          Code  Gb  DblAdd.o [4]
+__iar_data_init3        0x00009f85    0x28  Code  Gb  data_init.o [5]
+__iar_dsub              0x00004e71          Code  Gb  DblSub.o [4]
+__iar_dsubStart         0x00004e83          Code  Gb  DblSub.o [4]
+__iar_fadd              0x000052dd          Code  Gb  FltAdd.o [4]
+__iar_fsub              0x000051f5          Code  Gb  FltSub.o [4]
+__iar_fsubStart         0x00005205          Code  Gb  FltSub.o [4]
+__iar_program_start     0x0000a425          Code  Gb  cstartup_M.o [5]
+__iar_ui2d              0x000047f1          Code  Gb  I32ToDbl.o [4]
+__iar_ui2f              0x00004d41          Code  Gb  I32ToFlt.o [4]
+__iar_zero_init3        0x000047bb    0x22  Code  Gb  zero_init3.o [5]
+__low_level_init        0x0000a12f     0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000   0x410  Data  Gb  vectors.o [1]
+_call_main              0x0000a121          Code  Gb  cmain.o [5]
+_exit                   0x0000a139          Code  Gb  cexit.o [5]
+_main                   0x0000a12b          Code  Gb  cmain.o [5]
+ad_once                 0x00007d8f    0x7e  Code  Gb  adc.o [1]
+adc_config_alt          0x00007e75    0x26  Code  Lc  adc.o [1]
+adc_init                0x00007b59   0x236  Code  Gb  adc.o [1]
+adc_start               0x00007e0d    0x48  Code  Gb  adc.o [1]
+assert_failed           0x00005351    0x18  Code  Gb  assert.o [1]
+bus_clk_khz             0x1fff6d84     0x4  Data  Gb  sysinit.o [1]
+button_timeout          0x1fff103a     0x1  Data  Gb  main.o [1]
+cfgnum                  0x1fff10e4     0x1  Data  Gb  OV7725.o [1]
+codeGB_16               0x1fff0cc4   0x36c  Data  Gb  LCD.o [1]
+common_startup          0x00008a45    0xc0  Code  Gb  startup.o [1]
+core_clk_khz            0x1fff6d7c     0x4  Data  Gb  sysinit.o [1]
+core_clk_mhz            0x1fff6d80     0x4  Data  Gb  sysinit.o [1]
+cpu_identify            0x0000861b   0x20a  Code  Gb  start.o [1]
+default_isr             0x0000a489     0x8  Code  Gb  vectors.o [1]
+delayms                 0x000050e9    0x1e  Code  Gb  delay.o [1]
+dial_switch_Init        0x00009665    0x74  Code  Gb  dial_switch.o [1]
+dial_switch_Scan        0x000096d9    0x82  Code  Gb  dial_switch.o [1]
+diff_done_flag          0x1fff6d8e     0x1  Data  Gb  image_process.o [1]
+disable_irq             0x000071df    0x5e  Code  Gb  arm_cm4.o [1]
+double_AD               0x00000e03    0x22  Code  Gb  image_process.o [1]
+enable_irq              0x0000714b    0x94  Code  Gb  arm_cm4.o [1]
+exit                    0x0000a133     0x4  Code  Gb  exit.o [3]
+exti_init               0x00009c45    0x6c  Code  Gb  exti.o [1]
+filter_1st              0x00004d5d    0x36  Code  Gb  filter.o [1]
+flash_identify          0x00008825    0xbe  Code  Gb  start.o [1]
+get_black_line          0x00000751   0x336  Code  Gb  image_process.o [1]
+get_three_lie           0x00000a87   0x2d0  Code  Gb  image_process.o [1]
+getspeed1_init          0x00007595    0x98  Code  Gb  getspeed.o [1]
+getspeed2_init          0x0000762d    0x98  Code  Gb  getspeed.o [1]
+gpio_init               0x00004fdd    0xb6  Code  Gb  gpio.o [1]
+image_process           0x0000044d   0x2d0  Code  Gb  image_process.o [1]
+img_flag                0x1fff107d     0x1  Data  Gb  OV7725.o [1]
+main                    0x00008b61   0x29c  Code  Gb  main.o [1]
+mcg_div                 0x1fff1074     0x8  Data  Gb  mcg.o [1]
+min_u8_index            0x00004dd9    0x32  Code  Gb  mymath.o [1]
+myBEEP_Init             0x00007535    0x14  Code  Gb  beep.o [1]
+myKEY_Exti_Init         0x000097bd    0x22  Code  Gb  mykey.o [1]
+myLED_Init              0x00009765    0x1c  Code  Gb  LED.o [1]
+out_char                0x0000a3e5    0x10  Code  Gb  io.o [1]
+ov7725_get_img          0x000094c9    0x18  Code  Gb  OV7725.o [1]
+ov7727_reg              0x1fff1080    0x64  Data  Gb  OV7725.o [1]
+pit_init                0x000095f5    0x62  Code  Gb  PIT.o [1]
+pll_init                0x00008e05   0x2f4  Code  Gb  mcg.o [1]
+port_init               0x000097e1    0x4a  Code  Gb  port.o [1]
+port_init_NoALT         0x00005093    0x44  Code  Gb  gpio.o [1]
+power_s16               0x00004e0b    0x1c  Code  Gb  mymath.o [1]
+printf                  0x000058a3    0x26  Code  Gb  printf.o [1]
+printk                  0x00005491   0x412  Code  Gb  printf.o [1]
+printk_mknumstr         0x0000539b    0xaa  Code  Lc  printf.o [1]
+printk_pad_space        0x0000546b    0x26  Code  Lc  printf.o [1]
+printk_pad_zero         0x00005445    0x26  Code  Lc  printf.o [1]
+printk_putc             0x00005369    0x32  Code  Lc  printf.o [1]
+road_filter_flag        0x1fff6d8f     0x1  Data  Gb  image_process.o [1]
+set_sys_dividers        0x1fff1101    0x50  Code  Gb  mcg.o [1]
+stand_AD                0x1fff1070     0x2  Data  Gb  main.o [1]
+stand_AD_L              0x1fff106c     0x2  Data  Gb  main.o [1]
+stand_AD_R              0x1fff106e     0x2  Data  Gb  main.o [1]
+stand_d                 0x1fff221c     0x4  Data  Gb  main.o [1]
+stand_p                 0x1fff2218     0x4  Data  Gb  main.o [1]
+start                   0x000084ed   0x12e  Code  Gb  start.o [1]
+strlen                  0x000058cd    0x20  Code  Gb  stdlib.o [1]
+sum_point               0x00004e27    0x34  Code  Gb  mymath.o [1]
+sysinit                 0x00008b05    0x48  Code  Gb  sysinit.o [1]
+uart_init               0x0000726d   0x1f8  Code  Gb  uart.o [1]
+uart_pendchar           0x00007465    0x38  Code  Gb  uart.o [1]
+uart_pendstr            0x0000749d    0x34  Code  Gb  uart.o [1]
+uart_putchar            0x000074d1    0x1e  Code  Gb  uart.o [1]
+wdog_disable            0x00008a0d    0x16  Code  Gb  wdog.o [1]
+wdog_unlock             0x00008a25    0x16  Code  Gb  wdog.o [1]
+write_command           0x00003d79   0x1be  Code  Gb  LCD.o [1]
+write_data              0x00003f37   0x1be  Code  Gb  LCD.o [1]
+write_vtor              0x00007145     0x6  Code  Gb  arm_cm4.o [1]
+write_word              0x000040f5    0x16  Code  Gb  LCD.o [1]
+
+
+[1] = D:\MK60-shengsai\6.28改\build\fire_demo\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = m7M_tl.a
+[5] = rt7M_tl.a
+[6] = shb_l.a
+
+  35 904 bytes of readonly  code memory
+      80 bytes of readwrite code memory
+   6 224 bytes of readonly  data memory
+  26 943 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
