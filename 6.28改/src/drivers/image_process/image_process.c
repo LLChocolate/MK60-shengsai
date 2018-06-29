@@ -43,7 +43,7 @@ void image_process(void)
     road_filter_flag = 1;
   else
     road_filter_flag = 0;
-  Island_process();
+//  Island_process();
   Cross_process();
     Slow_Flag=0;
     if(Island.State!=NoIsland)

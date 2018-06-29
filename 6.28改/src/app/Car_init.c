@@ -11,10 +11,10 @@ void System_Init()
   dial_switch_Init();
   Parameters_init_CAR();
   MY_adc_init();
-  getspeed1_init();
+//  getspeed1_init();
   getspeed2_init();
   myLED_Init();
-  Motot1_Init();
+  Motot2_Init();
   cmt_pwm_init(50,1500);
 //  FTM_PWM_init(FTM0,CH2,10000,30000);
   myKEY_Init();
@@ -23,9 +23,7 @@ void System_Init()
   LCD_init(FALSE);
 
   Disp_single_colour(White);
-
-  PID_Init(&Motor1_PID,200,80,0,50000,50,50000,-50000);
-  PID_Init(&Motor2_PID,200,80,0,40000,50,50000,-50000);
+  PID_Init(&Motor2_PID,200,50,0,40000,50,65500,0);
 //  PID_Init(&Diff_PID,0.85,0,0.25,0,0,DIFF_UP,DIFF_DOWN);//30:0.08,40:0.09,50:0.13  limit:20
   //                                                  60:0.32                          limit:35
   //                                                  70:0.4 limit:50
@@ -63,13 +61,11 @@ void Parameters_init_CAR(void)
     Image_hang.center[i] = 160;
     Image_hang.halfwidth[i] = (i-Far_Point)*(80-24)*1.0/(Start_Point-Far_Point)+24;
   }
-  Speed_stand=145;
-  PID_Init(&Servo_PID,5,0,1.5,0,0,150,-150);
+  Speed_stand=90;
+  PID_Init(&Servo_PID,1.2,0,0,0,0,150,-150);
   if((Switch_Status&3)==0)
   {
-    
     PID_Init(&Diff_PID,0.8,0,0.23,0,0,Speed_stand,-Speed_stand);//30:0.08,40:0.09,50:0.13  limit:20
-
   }
   else if((Switch_Status&3)==1)
   {

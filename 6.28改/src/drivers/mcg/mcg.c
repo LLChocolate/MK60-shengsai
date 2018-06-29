@@ -81,8 +81,8 @@ unsigned char pll_init(clk_option opt)
             mcg_div.vdiv        = 18;
             break;
         case PLL150:
-            mcg_div.prdiv       = 6;
-            mcg_div.vdiv        = 20;
+            mcg_div.prdiv       = 7;
+            mcg_div.vdiv        = 26;
             break;
         case PLL160:
             mcg_div.prdiv       = 14;
@@ -93,8 +93,8 @@ unsigned char pll_init(clk_option opt)
             mcg_div.vdiv        = 27;
             break;
         case PLL180:
-            mcg_div.prdiv       = 14;
-            mcg_div.vdiv        = 30;
+            mcg_div.prdiv       = 5;
+            mcg_div.vdiv        = 21;
             break;
         case PLL200:
 //            mcg_div.prdiv       = 12;

@@ -7,7 +7,7 @@ void Motot1_Init(void)
 void Motot2_Init(void)
 {
   gpio_init(PORTA,12,GPO,HIGH);//DIR
-  FTM_PWM_init(MOTOR_2,10000,0);//设置频率为10k
+  FTM_PWM_init(MOTOR_2,1000,50000);//设置频率为10k
 }
 
 //void Steer_Init(void)

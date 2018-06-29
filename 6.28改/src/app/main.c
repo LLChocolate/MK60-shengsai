@@ -33,7 +33,7 @@ u8 LCD_DISPLAY_FLAG=1;
 u8 Motor_enable_Flag=1;
 u8 Slow_Flag=0;
 u8 Reduct_Flag=0;
-u8 Blue_Start_Flag=0;//蓝牙开启
+u8 Blue_Start_Flag=1;//蓝牙开启
 u8 Key_Start_Flag=0;
 //***********************调试用临时全局变量**************************
 float stand_p;
@@ -41,8 +41,8 @@ float stand_d;
 int P_TEMP1=550;//201
 int I_TEMP1=70;
 int D_TEMP1=0;
-int P_TEMP2=550;//90
-int I_TEMP2=70;
+int P_TEMP2=200;//90
+int I_TEMP2=50;
 int D_TEMP2=0;
 signed int Speed_goal1_TEMP=80;//电机转速目标值
 signed int Speed_goal2_TEMP=80;//电机转速目标值
@@ -63,32 +63,22 @@ u16 stand_AD_R = 0xffff;
 u16 stand_AD   = 0Xffff;
 PID_Struct Servo_PID;
 int center_temp_test = 160;
+u16 duty_temp=32767;
 //******************************************************************
 void main()
 {
-  u8 Str_temp[40];//
   u8 Key;
   u16 i=0,j;
   System_Init();
   Brush_Color=Black;
-  Motor1_PID.P=P_TEMP1;
-  Motor1_PID.I=I_TEMP1;
-  Motor1_PID.D=D_TEMP1;
-  Motor2_PID.P=P_TEMP2;
-  Motor2_PID.I=I_TEMP2;
-  Motor2_PID.D=D_TEMP2;
   Motor1_PID.target=Speed_goal1;
   Motor2_PID.target=Speed_goal2;
   Duty_Motor1=10000;
   Duty_Motor2=10000;
 while(1)
 {
-  Motor1_PID.P=P_TEMP1;
-  Motor1_PID.I=I_TEMP1;
-  Motor1_PID.D=D_TEMP1;
   Motor2_PID.P=P_TEMP2;
   Motor2_PID.I=I_TEMP2;
-  Motor2_PID.D=D_TEMP2;
   Key = KEY_Scan();
   if(Key == KEY1_PRES)
   {
@@ -107,27 +97,25 @@ while(1)
 //摄像头采集一次
 //图像处理  
     if(Image_Flag==1)
+  {
+    Image_Flag=0;
+    ov7725_get_img();//转存结束后立刻允许接收场中断 
+    image_process();
+    if(LCD_DISPLAY_FLAG==1)
     {
-      Image_Flag=0;
-      ov7725_get_img();//转存结束后立刻允许接收场中断 
-      image_process();
-      if(LCD_DISPLAY_FLAG==1)
-      {
-        Send_Image_to_LCD(Image_fire);
-        Send_Image_to_LCD(Image_fire);
-        LCD_Draw_Line(Image_lie.Three_Lie[0],Image_lie.Three_lie_end[0],Image_lie.Three_Lie[0],160);  
-        LCD_Draw_Line(Image_lie.Three_Lie[1],Image_lie.Three_lie_end[1],Image_lie.Three_Lie[1],160);  
-        LCD_Draw_Line(Image_lie.Three_Lie[2],Image_lie.Three_lie_end[2],Image_lie.Three_Lie[2],160);
-        LCD_Draw_Line(0,Island.Image_Start_hang,319,Island.Image_Start_hang);
+      Send_Image_to_LCD(Image_fire);
+      Send_Image_to_LCD(Image_fire);
+      LCD_Draw_Line(Image_lie.Three_Lie[0],Image_lie.Three_lie_end[0],Image_lie.Three_Lie[0],160);  
+      LCD_Draw_Line(Image_lie.Three_Lie[1],Image_lie.Three_lie_end[1],Image_lie.Three_Lie[1],160);  
+      LCD_Draw_Line(Image_lie.Three_Lie[2],Image_lie.Three_lie_end[2],Image_lie.Three_Lie[2],160);
+      LCD_Draw_Line(0,Island.Image_Start_hang,319,Island.Image_Start_hang);
 //        LCD_Draw_Line(0,Image_hang.hang_use,319,Image_hang.hang_use);
-        LCD_Draw_Line(0,Start_Point,319,Start_Point);
-        LCD_Put_Int(100,100,"",L_AD_Ave,Red,White);
-        LCD_Put_Int(100,120,"",R_AD_Ave,Red,White);
-      }
+      LCD_Draw_Line(0,Start_Point,319,Start_Point);
+      LCD_Put_Int(100,100,"",L_AD_Ave,Red,White);
+      LCD_Put_Int(100,120,"",R_AD_Ave,Red,White);
     }
-  Motor1_PID.target=Speed_goal1;//+1;
-  Motor2_PID.target=Speed_goal2;
-
+  }
+  SCI_Send_Datas(UART5);
   if(Motor_enable_Flag==0)
   {
     Speed_goal1=0;

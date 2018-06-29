@@ -70,12 +70,12 @@ void Get_speed2(Motor_Status* Motor)//测速
     if(Motor->Dir==0)//正转
     {
         if(10000 - FTM1_CNT < 9000)
-          Motor->Speed =10000- FTM1_CNT;
+          Motor->Speed = FTM1_CNT - 10000;
     }
     else//反转
     {
         if(FTM1_CNT < 9000)
-          Motor->Speed = -(FTM1_CNT);
+          Motor->Speed = (FTM1_CNT);
     }
     
     //清除
