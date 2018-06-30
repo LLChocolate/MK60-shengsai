@@ -51,7 +51,7 @@ Servo_Str;
 //ADC
 
 #define MYADC_1                          ADC1,AD14
-#define MYADC_2                          ADC1,AD12
+#define MYADC_2                          ADC0,AD12
 #define MYADC_3                          ADC1,AD11
 #define MYADC_4                          ADC0,AD13
 #define MYADC_5                          ADC1,AD15

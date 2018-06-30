@@ -318,13 +318,13 @@ void adc_config_alt(ADC_MemMapPtr adcmap, tADC_ConfigPtr ADC_CfgPtr)
 
 void MY_adc_init(void)
 {
-  adc_init(MYADC_1);
+//  adc_init(MYADC_1);
   adc_init(MYADC_2);
-  adc_init(MYADC_3);
-  adc_init(MYADC_4);
-  adc_init(MYADC_5);
-  adc_init(MYADC_6);
-  adc_init(MYADC_7);
-  adc_init(MYADC_8);
+//  adc_init(MYADC_3);
+//  adc_init(MYADC_4);
+//  adc_init(MYADC_5);
+//  adc_init(MYADC_6);
+//  adc_init(MYADC_7);
+//  adc_init(MYADC_8);
 }
 

@@ -399,9 +399,8 @@ void PIT0_IRQHandler()
 //    Get_speed1(&Motor1);
     Get_speed2(&Motor2);
 //    Speed_Control();
-    Speed_output();//ÔÝÊ±¸ø¹Ì¶¨pwm
-    L_AD_Ave = ad_once(MYADC_2,ADC_12bit);
-    R_AD_Ave = ad_once(MYADC_3,ADC_12bit);
+    Speed_output();
+    R_AD_Ave = ad_once(MYADC_2,ADC_12bit);
 //  }
 //  if(TimeCnt_5ms==7)
 //  {

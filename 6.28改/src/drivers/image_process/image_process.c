@@ -307,7 +307,7 @@ u8 Str_Cross_Test(void)
 
 u8 double_AD(void)
 {
-  if((L_AD_Ave>3000)||(R_AD_Ave>2400))
+  if(R_AD_Ave>2400)
   {
     return 1;
   }
