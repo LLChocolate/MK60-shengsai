@@ -14,7 +14,7 @@ void BEEP_Open_once(void)
   BEEP=0;
 } 
 
-  void Beep_Once(Beep_Str* Beep)
+void Beep_Once(Beep_Str* Beep)
 {
   BEEP = 1;
   Beep->Flag = 1;

@@ -65,6 +65,16 @@ void AD_new(void)
 void Servo_Diff_PID(void)
 {
   Servo_PID.feedback = Diff_error;
+  if(Island.State==Right_Island_pre)
+  {
+    Servo_PID.P = stand_p*1.5;
+    Servo_PID.D = stand_d*1.5;
+  }
+  else
+  {
+    Servo_PID.P = stand_p;
+    Servo_PID.D = stand_d;
+  }
   Diff_PID_Process(&Servo_PID);
   cmt_pwm_duty(Servo_PID.result+SERVO_MIDDLE);
 }

@@ -19,7 +19,7 @@
 #define AD_Near_hang        120
 #define Turn_Point          100
 
-#define Center_correct(hang)   ((hang-Start_Point)*(4-4)*1.0/(Far_Point-Start_Point)+4)
+#define Center_correct(hang)   ((hang-Start_Point)*(8-5)*1.0/(Far_Point-Start_Point)-8)
 
 
 #define _1m_Left        108
@@ -31,7 +31,7 @@
 #define  Centerdiff_const    10
 #define  Center_Filter_Period 5
 
-#define Island_Center_Period_Const  (10)
+
 #define Cross_Center_Period_Const  (10)
 
 typedef enum

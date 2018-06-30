@@ -14,18 +14,17 @@ u8  Start_line_cnt   = 0;
 u8  road_filter_flag = 0;
 Filter_1st_Str Center_Filter = {0.8,{0,0},{0,0}};
 //Kalman_Date Center_Filter={0,0,0,0,0,0.1,40,0,0};
-s16 fangcha_test[200]={0};
 
 u8 Cross_flag;
 u16 Cross_flag_delay;
 u16 Cross_flag_delay_const = 1000;
 
 Image_hangData Image_hang;
-Image_lieData  Image_lie={{78,158,238},{0}};
+Image_lieData  Image_lie={{85,165,245},{0}};
 Island_Data    Island={
                   .Correct_hang = 150,
                   .Stay_hang_use = 127,//Õâ¸öĞĞÊÇÏ¹¸øµÄ
-                  .Image_Start_hang = 86,
+                  .Image_Start_hang = 83,
                   .Next_Island_flag_delay_const = 1700,
                   .Stay2Out_flag_delay_const = 800
                     };
@@ -43,8 +42,9 @@ void image_process(void)
     road_filter_flag = 1;
   else
     road_filter_flag = 0;
-//  Island_process();
+  Island_process();
   Cross_process();
+//  Out_Island();
     Slow_Flag=0;
     if(Island.State!=NoIsland)
     {
@@ -307,7 +307,7 @@ u8 Str_Cross_Test(void)
 
 u8 double_AD(void)
 {
-  if(R_AD_Ave>2400)
+  if((L_AD_Ave>1980)||(R_AD_Ave>2000))
   {
     return 1;
   }
@@ -375,7 +375,7 @@ u8 In_Island(void)
     {
       Island.In2Stay_cnt ++;
       CenterlineToDiff(Island.In_Center);//Ê¹ÓÃÉÏÒ»´ÎµÄ¾ÉÖµ
-      if(Island.In2Stay_cnt>=10)//Á¬Ğø10´ÎÑ°ÕÒÊ§°Ü£¬ÈÏÎª½øÈë»·µº£¬¸üĞÂ×´Ì¬
+      if(Island.In2Stay_cnt>=20)//Á¬Ğø10´ÎÑ°ÕÒÊ§°Ü£¬ÈÏÎª½øÈë»·µº£¬¸üĞÂ×´Ì¬
       {
         if(Island.State==Left_Island_pre)
         {
@@ -395,7 +395,7 @@ u8 In_Island(void)
     {
       if(Island.State==Left_Island_pre)
       {
-        if(center>Image_lie.Three_Lie[1]+30)//Í»±äµãÌ«¿¿ÓÒ
+        if(center>Image_lie.Three_Lie[1]+50)//Í»±äµãÌ«¿¿ÓÒ
         {
           Island.In2Stay_cnt++;
           get_black_line(Image_fire[Start_Point],Start_Point);//45cm´¦ÖĞĞÄµã
@@ -411,9 +411,9 @@ u8 In_Island(void)
         {
           Island.In2Stay_cnt = 0;//ÇåÁã
           if(Impulse_hang<95)
-            center_use = ((center - (center - 319)*(Impulse_hang - Start_Point)*1.0/(Impulse_hang - Island.Correct_hang)) + 0)/2 + 50;//²¼Ïß£¨Èı½ÇĞÎÏàËÆ£©
+            center_use = ((center - (center - 319)*(Impulse_hang - Start_Point)*1.0/(Impulse_hang - Island.Correct_hang)) + 0)/2 + 60;//²¼Ïß£¨Èı½ÇĞÎÏàËÆ£©
           else
-            center_use = ((center - (center - 319)*(Impulse_hang - Start_Point)*1.0/(Impulse_hang - Island.Correct_hang)) + 0)/2 + 30;//²¼Ïß£¨Èı½ÇĞÎÏàËÆ£©
+            center_use = ((center - (center - 319)*(Impulse_hang - Start_Point)*1.0/(Impulse_hang - Island.Correct_hang)) + 0)/2 + 40;//²¼Ïß£¨Èı½ÇĞÎÏàËÆ£©
           if(center_use<35)
             center_use = 35;
         }
@@ -422,7 +422,7 @@ u8 In_Island(void)
       }
       else if(Island.State==Right_Island_pre)
       {
-        if(center<Image_lie.Three_Lie[1]-30)//Í»±äµãÌ«¿¿×ó
+        if(center<Image_lie.Three_Lie[1]-50)//Í»±äµãÌ«¿¿×ó
         {
           Island.In2Stay_cnt++;
           get_black_line(Image_fire[Start_Point],Start_Point);//45cm´¦ÖĞĞÄµã
@@ -567,6 +567,9 @@ int In_Island_center(u8* hang)//Èë»·µºÊ±Ñ°ÕÒÍ»±äµã+²¹Ïß
 
 u8 Stay_Island(void)
 {
+  static u8  center_Period;
+  static int Center_[Island_Center_Period_Const];
+  static int Center_Sum = 0;
   if(Island.State!=Left_Island_in&&Island.State!=Right_Island_in)
     return 1;
   
@@ -580,6 +583,14 @@ u8 Stay_Island(void)
   }
   CenterlineToDiff(Image_hang.center[Image_hang.hang_use]);
   
+  if(center_Period > (Island_Center_Period_Const - 1))
+    center_Period = 0;
+
+  Center_Sum  -= Center_[center_Period];
+  Center_[center_Period] = Image_hang.center[Image_hang.hang_use];
+  Center_Sum  += Center_[center_Period];
+  center_Period++;  
+  
   if(Island.Out_Allow_flag==1)//ÔÊĞí¸Ä±ä×´Ì¬
   {
     if(Stay2Out_test()==1)
@@ -588,10 +599,17 @@ u8 Stay_Island(void)
       Island.Stay2Out_cnt = 0;
     if(Island.Stay2Out_cnt>1)//Á¬ĞøÁ½´Î²âµ½Í»±äµã×´Ì¬¸Ä±ä
     {
+      
       if(Island.State==Left_Island_in)
+      {
+        Island.Out_Center = Center_Sum*2/3;
         Island.State = Left_Island_out;
+      }
       else if(Island.State==Right_Island_in)
+      {
+        Island.Out_Center = Center_Sum;
         Island.State = Right_Island_out;
+      }
     }
   }
 
@@ -603,8 +621,6 @@ u8 Out_Island(void)
   int Start_End, End_End;
   int center_impulse;//´æ´¢Í»±äµãÁĞÊı
   int center_use;
-  static u8  center_Period = 0;
-  static u16 Center_[Island_Center_Period_Const];
   
   //¼ì²â³ö»·µº±êÖ¾
   if(Island.State!=Right_Island_out&&Island.State!=Left_Island_out)
@@ -613,40 +629,24 @@ u8 Out_Island(void)
   center_impulse = Out_Island_Test(&Start_End,&End_End);
   if(Island.State==Right_Island_out)//²¹Ïß
   {
-    center_use = ((center_impulse - (center_impulse - 0)*(End_End - Start_Point)*1.0/(End_End - Start_End)) + 319)/2;
-    if(center_use>Image_lie.Three_Lie[1]+30)//ÓĞĞ§ĞÔ¼ìÑé
+    center_use = ((center_impulse - (center_impulse - 0)*(End_End - Start_Point)*1.0/(End_End - Start_End)) + 319)/2-40;
+    if((center_impulse!=-1) && (center_use>Image_lie.Three_Lie[1]))//ÓĞĞ§ĞÔ¼ìÑé
     {
       if(center_use > 285)
         center_use = 285;
       CenterlineToDiff(center_use);
-      if(center_Period > (Island_Center_Period_Const - 1))
-        center_Period = 0;
+      if(Island.Out_center_Period > (Island_Center_Period_Const - 1))
+        Island.Out_center_Period = 0;
     
-      Island.Out_Center  -= Center_[center_Period];
-      Center_[center_Period] = center_use;
-      Island.Out_Center  += Center_[center_Period];
-      center_Period++;  
+      Island.Out_Center  -= Island.Out_Center_[Island.Out_center_Period];
+      Island.Out_Center_[Island.Out_center_Period] = center_use;
+      Island.Out_Center  += Island.Out_Center_[Island.Out_center_Period];
+      Island.Out_center_Period++;  
 //µ÷ÊÔÓÃ£¬ÏÔÊ¾ÖĞĞÄµã
       if(LCD_DISPLAY_FLAG==1)
       {
         LCD_DrawBigPoint(center_use,Start_Point,Cyan);//ĞĞÁĞµßµ¹
       }
-    }
-    else if((Image_lie.Three_lie_end[0]-10)>Image_lie.Three_lie_end[1]
-            ||(Image_lie.Three_lie_end[1]-10)>Image_lie.Three_lie_end[2])
-    {
-      //µ±×÷ÆÕÍ¨ÍäµÀÑ°ÕÒÖĞÏß
-      get_black_line(Image_fire[Start_Point],Start_Point);//45cm´¦ÖĞĞÄµã
-      if(Image_lie.Three_lie_end[0]>Image_hang.hang_use+5
-         &&Image_lie.Three_lie_end[1]>Image_hang.hang_use+5
-           &&Image_lie.Three_lie_end[2]>Image_hang.hang_use+5)//È¥³ı¹â°ßµÄÓ°Ïì
-      {
-        get_black_line(Image_fire[Image_lie.Three_lie_end[1]+3],Image_lie.Three_lie_end[1]+3);
-      }
-      if(Image_hang.center[Image_hang.hang_use]>170)//¼ìÑéÖĞµãÕıÈ·ĞÔ
-        CenterlineToDiff(Image_hang.center[Image_hang.hang_use]);
-      else
-        CenterlineToDiff(Island.Out_Center/Island_Center_Period_Const);
     }
     else//²¹ÏßÊ§°Ü£¬Ê¹ÓÃÖ®Ç°±£´æµÄÖĞĞÄµã
     {
@@ -660,40 +660,24 @@ u8 Out_Island(void)
   }
   else if(Island.State==Left_Island_out)
   {
-    center_use = ((center_impulse - (center_impulse - 319)*(End_End - Start_Point)*1.0/(End_End - Start_End)) + 0)/2;
-    if(center_use<Image_lie.Three_Lie[1]-30)//ÓĞĞ§ĞÔ¼ìÑé
+    center_use = ((center_impulse - (center_impulse - 319)*(End_End - Start_Point)*1.0/(End_End - Start_End)) + 0)/2-20;
+    if((center_impulse!=-1)&&(center_use<Image_lie.Three_Lie[1]))//ÓĞĞ§ĞÔ¼ìÑé
     {
       if(center_use < 35)
         center_use = 35;
       CenterlineToDiff(center_use);
-      if(center_Period > (Island_Center_Period_Const - 1))
-        center_Period = 0;
+      if(Island.Out_center_Period > (Island_Center_Period_Const - 1))
+        Island.Out_center_Period = 0;
     
-      Island.Out_Center  -= Center_[center_Period];
-      Center_[center_Period] = center_use;
-      Island.Out_Center  += Center_[center_Period];
-      center_Period++;  
+      Island.Out_Center  -= Island.Out_Center_[Island.Out_center_Period];
+      Island.Out_Center_[Island.Out_center_Period] = center_use;
+      Island.Out_Center  += Island.Out_Center_[Island.Out_center_Period];
+      Island.Out_center_Period++;  
 //µ÷ÊÔÓÃ£¬ÏÔÊ¾ÖĞĞÄµã
       if(LCD_DISPLAY_FLAG==1)
       {
         LCD_DrawBigPoint(center_use,Start_Point,Cyan);//ĞĞÁĞµßµ¹
       }
-    }
-    else if((Image_lie.Three_lie_end[2]-10)>Image_lie.Three_lie_end[1]
-            ||(Image_lie.Three_lie_end[1]-10)>Image_lie.Three_lie_end[0])
-    {
-      //µ±×÷ÆÕÍ¨ÍäµÀÑ°ÕÒÖĞÏß
-      get_black_line(Image_fire[Start_Point],Start_Point);//45cm´¦ÖĞĞÄµã
-      if(Image_lie.Three_lie_end[0]>Image_hang.hang_use+5
-         &&Image_lie.Three_lie_end[1]>Image_hang.hang_use+5
-           &&Image_lie.Three_lie_end[2]>Image_hang.hang_use+5)//È¥³ı¹â°ßµÄÓ°Ïì
-      {
-        get_black_line(Image_fire[Image_lie.Three_lie_end[1]+3],Image_lie.Three_lie_end[1]+3);
-      }
-      if(Image_hang.center[Image_hang.hang_use]<150)//¼ìÑéÖĞµãÕıÈ·ĞÔ
-        CenterlineToDiff(Image_hang.center[Image_hang.hang_use]);
-      else
-        CenterlineToDiff(Island.Out_Center/Island_Center_Period_Const);
     }
     else//²¹ÏßÊ§°Ü£¬Ê¹ÓÃÖ®Ç°±£´æµÄÖĞĞÄµã
     {
@@ -722,7 +706,7 @@ u8 Image_Island_Test(void)//²¶×½ºÚÏß
   
   for(i=0;i<10;i++)//10ĞĞ
   {
-    ImageData_in = Image_fire[i*3+Island.Image_Start_hang];
+    ImageData_in = Image_fire[i*4+Island.Image_Start_hang];
     for(j=0;j<40;j++)
       for(u8 k=0;k<8;k++)
         ImageData[j*8+k] = (ImageData_in[j]>>(7-k))&0x01;
@@ -822,17 +806,18 @@ int Test_Far_Lie(void)//ÔÚÈë»·µºÊ±ÕÒ×îÔ¶µãËùÔÚµÄÁĞ£¬´Ó´ËÁĞ¿ªÊ¼ÏòÁ½±ßÑ°ÕÒÍ»±äµã
 
 int Out_Island_Test(int* start_end, int* end_end)//¿ªÊ¼¼ÆÊıÁĞµÄÖÕµãºÍÄ©Î²ÁĞµÄÖÕµã
 {
-  u8 Far_Lie[25];
-  int Diff_Far_Lie[24];//Ò»½×²î·Ö
-  int DDiff_Far_Lie[23];//¶ş½×²î·Ö
+  u8 Far_Lie[35];
+  int Diff_Far_Lie[34];//Ò»½×²î·Ö
+  int DDiff_Far_Lie[33];//¶ş½×²î·Ö
   int Liner_cnt  = 0;
-  int out_center = 160;
+  int out_center = -1;
+  u8  Impulse_flag = 0;
   
   u8 Temp_point;
   u8 i;
   if(Island.State==Right_Island_out)
   {
-    for(i=0;i<25;i++)
+    for(i=0;i<35;i++)
     {
       Temp_point=239;
       while(!(Image_Point(Temp_point,0+i*4)==1
@@ -841,25 +826,27 @@ int Out_Island_Test(int* start_end, int* end_end)//¿ªÊ¼¼ÆÊıÁĞµÄÖÕµãºÍÄ©Î²ÁĞµÄÖÕµ
       Temp_point--;
       Far_Lie[i] = Temp_point;
     }
-    for(i=0;i<24;i++)
+    for(i=0;i<34;i++)
     {
       Diff_Far_Lie[i] = Far_Lie[i+1] - Far_Lie[i];
     }
-    for(i=0;i<23;i++)
+    for(i=0;i<33;i++)
     {
       DDiff_Far_Lie[i] = Diff_Far_Lie[i+1] - Diff_Far_Lie[i];
       if(Abs_(DDiff_Far_Lie[i])<3)//ÏßĞÔ±êÖ¾
         Liner_cnt++;
-      if(DDiff_Far_Lie[i]<-15&&Liner_cnt>(i-2)&&Liner_cnt>1)//Ö®Ç°ÏßĞÔ£¬³öÏÖ³å¼¤
+      if(DDiff_Far_Lie[i]<-15&&Liner_cnt>i/2&&Liner_cnt>0)//Ö®Ç°ÏßĞÔ£¬³öÏÖ³å¼¤
       {
+        Impulse_flag = 1;
         break;
       }
     }
-    out_center = 4*i;//¼ÇÂ¼Í»±äµã
+    if(Impulse_flag==1)
+      out_center = 4*i;//¼ÇÂ¼Í»±äµã
   }
   else if(Island.State==Left_Island_out)
   {
-    for(i=0;i<25;i++)
+    for(i=0;i<35;i++)
     {
       Temp_point=239;
       while(!(Image_Point(Temp_point,319-i*4)==1
@@ -868,21 +855,23 @@ int Out_Island_Test(int* start_end, int* end_end)//¿ªÊ¼¼ÆÊıÁĞµÄÖÕµãºÍÄ©Î²ÁĞµÄÖÕµ
       Temp_point--;
       Far_Lie[i] = Temp_point;
     }
-    for(i=0;i<24;i++)
+    for(i=0;i<34;i++)
     {
       Diff_Far_Lie[i] = Far_Lie[i+1] - Far_Lie[i];
     }
-    for(i=0;i<23;i++)
+    for(i=0;i<33;i++)
     {
       DDiff_Far_Lie[i] = Diff_Far_Lie[i+1] - Diff_Far_Lie[i];
       if(Abs_(DDiff_Far_Lie[i])<3)//ÏßĞÔ±êÖ¾
         Liner_cnt++;
-      if(DDiff_Far_Lie[i]<-15&&Liner_cnt>(i-2)&&Liner_cnt>1)//Ö®Ç°ÏßĞÔ£¬³öÏÖ³å¼¤
+      if(DDiff_Far_Lie[i]<-15&&Liner_cnt>i/2&&Liner_cnt>0)//Ö®Ç°ÏßĞÔ£¬³öÏÖ³å¼¤
       {
+        Impulse_flag = 1;
         break;
       }
     }
-    out_center = 319-4*i;//¼ÇÂ¼Í»±äµã
+    if(Impulse_flag==1)
+      out_center = 319-4*i;//¼ÇÂ¼Í»±äµã
   }
   *start_end = Far_Lie[0];
   *end_end   = Far_Lie[i];

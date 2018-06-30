@@ -38,8 +38,8 @@ void System_Init()
   //                                                    150:0.85 0.25
   //                                                    153:0.96 0.25
   //                                                    155:1   0.28  110
-  stand_p=Diff_PID.P;
-  stand_d=Diff_PID.D;
+  stand_p=Servo_PID.P;
+  stand_d=Servo_PID.D;
 //  PID_Init(&Diff_Straight,0.04,0,0,0,0,DIFF_UP,DIFF_DOWN);
 //  stand_p=
     
@@ -61,8 +61,8 @@ void Parameters_init_CAR(void)
     Image_hang.center[i] = 160;
     Image_hang.halfwidth[i] = (i-Far_Point)*(80-24)*1.0/(Start_Point-Far_Point)+24;
   }
-  Speed_stand=90;
-  PID_Init(&Servo_PID,1.2,0,0,0,0,150,-150);
+  Speed_stand=120;
+  PID_Init(&Servo_PID,1.5,0,0.3,0,0,150,-150);
   if((Switch_Status&3)==0)
   {
     PID_Init(&Diff_PID,0.8,0,0.23,0,0,Speed_stand,-Speed_stand);//30:0.08,40:0.09,50:0.13  limit:20

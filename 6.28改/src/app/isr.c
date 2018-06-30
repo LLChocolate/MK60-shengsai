@@ -307,6 +307,7 @@ void PIT0_IRQHandler()
   static unsigned int  TimeCnt_Key_Start_ms = 0;
   static unsigned int  TimeCnt_Key__ms = 0;
   static unsigned int  TimeCnt_Start_Reduct_ms = 0;
+  u8 i;
   //时间标尺更新 
   Time_1ms++; 
   TimeCnt_5ms++;
@@ -337,6 +338,9 @@ void PIT0_IRQHandler()
       Island.Out_Allow_flag = 0;
       Island.Stay2Out_cnt = 0;
       Island.Next_Island_flag = 0;
+      Island.Out_center_Period = 0;
+      for(i=0;i<Island_Center_Period_Const;i++)
+        Island.Out_Center_[i]=0;
     }
     Island.Next_Island_flag_delay--;
   }
@@ -400,6 +404,7 @@ void PIT0_IRQHandler()
     Get_speed2(&Motor2);
 //    Speed_Control();
     Speed_output();
+    L_AD_Ave = ad_once(MYADC_1,ADC_12bit);
     R_AD_Ave = ad_once(MYADC_2,ADC_12bit);
 //  }
 //  if(TimeCnt_5ms==7)

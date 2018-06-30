@@ -38,7 +38,7 @@ typedef struct{
   s16 Speed;
 }Motor_Status;          //电机状态结构体
 
-#define SERVO_MIDDLE    1480
+#define SERVO_MIDDLE    1467
 
 typedef struct
 {
@@ -50,7 +50,7 @@ Servo_Str;
 
 //ADC
 
-#define MYADC_1                          ADC1,AD14
+#define MYADC_1                          ADC0,AD13
 #define MYADC_2                          ADC0,AD12
 #define MYADC_3                          ADC1,AD11
 #define MYADC_4                          ADC0,AD13
@@ -172,7 +172,7 @@ enum ISLAND_STATE
   Right_Wait_Next
 };
 
-
+#define Island_Center_Period_Const  (3)
 typedef struct
 {
   enum ISLAND_STATE State;
@@ -195,6 +195,9 @@ typedef struct
   u8  Out_Allow_flag;
   
   u8  Stay2Out_cnt;
+  
+  u8  Out_center_Period;
+  int Out_Center_[Island_Center_Period_Const];
   
   u8  Next_Island_flag;         //和下一个环岛之间的时间间隔
   u16 Next_Island_flag_delay;
