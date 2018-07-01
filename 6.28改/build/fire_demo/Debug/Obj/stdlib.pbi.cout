@@ -110,6 +110,8 @@ D:\MK60-shengsai\6.28改\build\fire_demo\..\..\src\drivers\filter
 -I
 D:\MK60-shengsai\6.28改\build\fire_demo\..\..\src\drivers\cmt
 -I
+D:\MK60-shengsai\6.28改\build\fire_demo\..\..\src\drivers\power
+-I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\CMSIS\Include
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\inc
@@ -223,6 +225,8 @@ D:\MK60-shengsai\6.28改\src\drivers\image_process
 D:\MK60-shengsai\6.28改\src\drivers\filter
 -I
 D:\MK60-shengsai\6.28改\src\drivers\cmt
+-I
+D:\MK60-shengsai\6.28改\src\drivers\power
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\CMSIS\Include
 -DIAR=1
@@ -423,8 +427,8 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\CMSIS\Include
 -D__HAS_LOCATED_WITH_INIT__=1
 -D__IAR_COMPILERBASE__=594176
 -D_GOANNA=1
--D__DATE__="Jun 30 2018"
--D__TIME__="22:03:48"
+-D__DATE__="Jul  1 2018"
+-D__TIME__="22:35:21"
 -D__STDC__=1
 -D__STDC_VERSION__=199901L
 -D__STDC_HOSTED__=1

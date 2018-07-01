@@ -67,8 +67,8 @@ void Servo_Diff_PID(void)
   Servo_PID.feedback = Diff_error;
   if(Island.State==Right_Island_pre)
   {
-    Servo_PID.P = stand_p*1.5;
-    Servo_PID.D = stand_d*1.5;
+    Servo_PID.P = stand_p;
+    Servo_PID.D = stand_d;
   }
   else
   {

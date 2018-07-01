@@ -320,7 +320,7 @@ void MY_adc_init(void)
 {
   adc_init(MYADC_1);
   adc_init(MYADC_2);
-//  adc_init(MYADC_3);
+  
 //  adc_init(MYADC_4);
 //  adc_init(MYADC_5);
 //  adc_init(MYADC_6);

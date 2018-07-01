@@ -358,6 +358,7 @@
           <state>$PROJ_DIR$\..\..\src\drivers\image_process</state>
           <state>$PROJ_DIR$\..\..\src\drivers\filter</state>
           <state>$PROJ_DIR$\..\..\src\drivers\cmt</state>
+          <state>$PROJ_DIR$\..\..\src\drivers\power</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -2146,6 +2147,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\src\drivers\key\mykey.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\src\drivers\power\mypower.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\src\drivers\PWM\myPWM.c</name>

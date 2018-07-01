@@ -19,7 +19,7 @@
 #define AD_Near_hang        120
 #define Turn_Point          100
 
-#define Center_correct(hang)   ((hang-Start_Point)*(8-5)*1.0/(Far_Point-Start_Point)-8)
+#define Center_correct(hang)   ((hang-Start_Point)*(1-2)*1.0/(Far_Point-Start_Point)-1)
 
 
 #define _1m_Left        108
@@ -66,4 +66,6 @@ u8 Cross_curve_test();
 u8 Out_Cross_test(void);
 u8 Cross_pre_test(void);
 u8 Str_Cross(void);
+u8 Find_Start_line(void);
+u8 Start_Line_process(void);
 #endif

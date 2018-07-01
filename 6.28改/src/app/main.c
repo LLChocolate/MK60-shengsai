@@ -64,6 +64,9 @@ u16 stand_AD   = 0Xffff;
 PID_Struct Servo_PID;
 int center_temp_test = 160;
 u16 duty_temp=32767;
+Cap_Run_Str Run_={.Run_Volts = 10};
+Start_line_Str Start_line = {._2Over_cnt = 10000,
+                            ._2Over_cnt_const = 10000};
 //******************************************************************
 void main()
 {
@@ -94,6 +97,11 @@ while(1)
   {
     Beep_Once(&Image_Island_Test_Beep);
   }
+  else if(Key == KEY_Stop_PRES)
+  {
+    Speed_stand = 0;
+    Blue_Start_Flag = 0;
+  }
 //摄像头采集一次
 //图像处理  
     if(Image_Flag==1)
@@ -116,26 +124,9 @@ while(1)
     }
   }
   SCI_Send_Datas(UART5);
-  if(Motor_enable_Flag==0)
-  {
-    Speed_goal1=0;
-    Speed_goal2=0;
-    
-    if(Motor1.Speed<1&&Motor2.Speed<1)
-    {
-      disable_irq(68); 
-      MOTOR1_DIR=0;
-      FTM_PWM_Duty(MOTOR_1,0);
-      MOTOR2_DIR=0;
-      FTM_PWM_Duty(MOTOR_2,0);
-    }
-  }
   if(Blue_Start_Flag==0)
   {
-      MOTOR1_DIR=0;
-      FTM_PWM_Duty(MOTOR_1,0);
-      MOTOR2_DIR=0;
-      FTM_PWM_Duty(MOTOR_2,0);
+      FTM_PWM_Duty(MOTOR_2,0xffff);
   }
   
 }

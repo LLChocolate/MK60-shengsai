@@ -323,6 +323,9 @@
       <name>$PROJ_DIR$\..\..\src\drivers\key\mykey.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\src\drivers\power\mypower.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\src\drivers\PWM\myPWM.c</name>
     </file>
     <file>

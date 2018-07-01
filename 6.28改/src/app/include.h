@@ -59,6 +59,7 @@
 //#include "pacman.h"
 #include "filter.h"
 #include "cmt.h"
+#include "mypower.h"
 
 /*************************************************************************
 *  模块名称：结构体和变量模块
@@ -144,4 +145,6 @@ extern u16 stand_AD;
 extern u8 TimeCnt_Start_Reduct_Flag;
 extern Beep_Str Image_Island_Test_Beep;//测试摄像头环岛监测
 extern PID_Struct Servo_PID;
+extern Cap_Run_Str Run_;
+extern Start_line_Str Start_line;
 #endif  //__INCLUDE_H__

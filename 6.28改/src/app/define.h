@@ -52,7 +52,7 @@ Servo_Str;
 
 #define MYADC_1                          ADC0,AD13
 #define MYADC_2                          ADC0,AD12
-#define MYADC_3                          ADC1,AD11
+#define MYADC_3                          ADC1,AD10
 #define MYADC_4                          ADC0,AD13
 #define MYADC_5                          ADC1,AD15
 #define MYADC_6                          ADC1,AD13
@@ -75,6 +75,8 @@ Servo_Str;
 #define KEY2_PRES        2
 #define KEY3             PTA15_IN
 #define KEY3_PRES        3   
+#define KEY_Stop         PTD15_IN
+#define KEY_Stop_PRES    4   
 
 //·äÃùÆ÷
 #define BEEP PTD6_OUT
@@ -229,4 +231,19 @@ typedef struct
   u8  Test_hang;
 }Cross_Data;
 
+
+typedef struct
+{
+  float Run_Volts;
+  u8 Run_flag;//ÆðÅÜ±êÖ¾
+}Cap_Run_Str;
+
+
+typedef struct
+{
+  u16 _2Over_cnt;
+  u16 _2Over_cnt_const;
+  u8 test_allow_flag;
+  u8 Start_Line_cnt;
+}Start_line_Str;
 #endif //_DEFINE_H

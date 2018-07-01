@@ -11,6 +11,7 @@ void System_Init()
   dial_switch_Init();
   Parameters_init_CAR();
   MY_adc_init();
+//  my_Power_Init();
 //  getspeed1_init();
   getspeed2_init();
   myLED_Init();
@@ -62,7 +63,7 @@ void Parameters_init_CAR(void)
     Image_hang.halfwidth[i] = (i-Far_Point)*(80-24)*1.0/(Start_Point-Far_Point)+24;
   }
   Speed_stand=120;
-  PID_Init(&Servo_PID,1.5,0,0.3,0,0,150,-150);
+  PID_Init(&Servo_PID,1.1,0,0.1,0,0,150,-150);
   if((Switch_Status&3)==0)
   {
     PID_Init(&Diff_PID,0.8,0,0.23,0,0,Speed_stand,-Speed_stand);//30:0.08,40:0.09,50:0.13  limit:20
