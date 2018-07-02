@@ -229,6 +229,9 @@ typedef struct
   enum Cross_STATE State;
   int In_center;
   u8  Test_hang;
+  u16  Cross_delay_cnt;
+  u16  Cross_delay_cnt_const;
+  u8   Cross_delay_flag;
 }Cross_Data;
 
 

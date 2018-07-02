@@ -411,9 +411,16 @@ void PIT0_IRQHandler()
   }
 
 //按键消抖函数结束
-//**********************************************摄像头图像处理
-//  if
-  
+//*********************************************十字延时******************************************
+//  if(Cross.Cross_delay_flag==1)
+//  {
+//    if(Cross.Cross_delay_cnt==0)
+//    {
+//      Cross.Cross_delay_flag = 0;//清空
+//    }
+//    Cross.Cross_delay_cnt--;
+//  }
+//*********************************************END********************************************
   
 //***************************************************差速函数
   if(TimeCnt_5ms==1)
@@ -423,50 +430,11 @@ void PIT0_IRQHandler()
 //****************************************************测速函数
   if(TimeCnt_5ms==2&&Blue_Start_Flag==1)//20ms执行一次
   {
-//    Get_speed1(&Motor1);
     Get_speed2(&Motor2);
-//    Speed_Control();
     Speed_output();
-    L_AD_Ave = ad_once(MYADC_1,ADC_12bit);
-    R_AD_Ave = ad_once(MYADC_2,ADC_12bit);
-//  }
-//  if(TimeCnt_5ms==7)
-//  {
-//    if(TimeCnt_Start_Reduct_Flag==1)
-//      Motor1_PID.feedback=Motor1.Speed;
-//    else 
-//      Motor1_PID.feedback=Speed_L_50ms*1.0/10;
-//    PID_process(&Motor1_PID);
-//    if(Motor1_PID.result<0)
-//    {
-//      MOTOR1_DIR=0;//如果result<0，电机反向
-//      Duty_Motor1=-Motor1_PID.result;
-//      FTM_PWM_Duty(MOTOR_1,Duty_Motor1);
-//    }
-//    else
-//    {
-//      MOTOR1_DIR=1;
-//      Duty_Motor1=Motor1_PID.result;
-//      FTM_PWM_Duty(MOTOR_1,0xffff-Duty_Motor1);
-//    }
-//    
-//    if(TimeCnt_Start_Reduct_Flag==1)
-//      Motor2_PID.feedback=Motor2.Speed;
-//    else
-//      Motor2_PID.feedback=Speed_R_50ms*1.0/10;
-//    PID_process(&Motor2_PID);
-//    if(Motor2_PID.result<0)
-//    {
-//      MOTOR2_DIR=0;//如果result<0，电机反向
-//      Duty_Motor2=-Motor2_PID.result;
-//      FTM_PWM_Duty(MOTOR_2,Duty_Motor2);
-//    }
-//    else
-//    {
-//      MOTOR2_DIR=1;
-//      Duty_Motor2=Motor2_PID.result;
-//      FTM_PWM_Duty(MOTOR_2,0xffff-Duty_Motor2);
-//    }
+    AD_new();
+    if(L_AD_Sum<100&&L_AD_Sum<100)
+      Blue_Start_Flag = 0;
   }
   if(TimeCnt_20ms==2)
   {

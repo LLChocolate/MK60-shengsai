@@ -63,7 +63,7 @@ u8 In_Cross_test();//斜入十字检测
 u8 In_Cross();//斜入十字
 u8 Cross_center_test(int* start_end, int* end_end);//和出环岛时找中心点的代码一样
 u8 Cross_curve_test();
-u8 Out_Cross_test(void);
+u8 Out_Cross(void);
 u8 Cross_pre_test(void);
 u8 Str_Cross(void);
 u8 Find_Start_line(void);

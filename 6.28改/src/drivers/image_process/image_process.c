@@ -29,6 +29,8 @@ Island_Data    Island={
                   .Stay2Out_flag_delay_const = 800
                     };
 Cross_Data     Cross={
+                  .Cross_delay_cnt = 100,
+                  .Cross_delay_cnt_const = 100,
                   .Test_hang = 180
                     };
 void image_process(void)
@@ -46,7 +48,6 @@ void image_process(void)
   get_black_line(Image_fire[Far_Point],Far_Point);//45cm处中心点
   Island_process();
   Cross_process();
-  Find_Start_line();
   Start_Line_process();
 //  Out_Island();
     Slow_Flag=0;
@@ -313,7 +314,8 @@ u8 Str_Cross_Test(void)
 
 u8 double_AD(void)
 {
-  if((L_AD_Ave>1700)||(R_AD_Ave>1700))
+  if((L_AD_Ave>1000)&&(R_AD_Ave>1800)
+     ||(L_AD_Ave>1800)&&(R_AD_Ave>1000))
   {
     return 1;
   }
@@ -1134,6 +1136,7 @@ u8 Cross_process(void)
   Cross.State = NoCross;//清空状态
   In_Cross_test();//斜入十字检测
   In_Cross();//斜入十字
+//  Out_Cross();
   Str_Cross();
   return 0;
 }
@@ -1149,11 +1152,6 @@ u8 In_Cross_test()//斜入十字检测
   
   Cross_pre_test();
   Cross_curve_flag = Cross_curve_test();
-//  if(Cross_curve_flag==0)//不是斜入十字
-//  {
-//    if(Cross_Test()==1)//优先级最低
-//    Cross.State = Str2Cross;
-//  }
   return 0;
 }
 
@@ -1172,7 +1170,9 @@ u8 In_Cross(void)//斜入十字
   center_impulse = Cross_center_test(&Start_End,&End_End);
   if(Cross.State==R2Cross_True)//补线
   {
-    center_use = ((center_impulse - (center_impulse - 0)*(End_End - Start_Point)*1.0/(End_End - Start_End)) + 319)/2+10;
+    Cross.Cross_delay_flag = 1;
+    Cross.Cross_delay_cnt = Cross.Cross_delay_cnt_const;
+    center_use = ((center_impulse - (center_impulse - 0)*(End_End - Start_Point)*1.0/(End_End - Start_End)) + 319)/2+20;
     if(center_use>Image_lie.Three_Lie[1]+10)//有效性检验
     {
       if(center_use > 285)
@@ -1219,7 +1219,9 @@ u8 In_Cross(void)//斜入十字
   }
   else if(Cross.State==L2Cross_True)
   {
-    center_use = ((center_impulse - (center_impulse - 319)*(End_End - Start_Point)*1.0/(End_End - Start_End)) + 0)/2 - 10;
+    Cross.Cross_delay_flag = 1;
+    Cross.Cross_delay_cnt = Cross.Cross_delay_cnt_const;
+    center_use = ((center_impulse - (center_impulse - 319)*(End_End - Start_Point)*1.0/(End_End - Start_End)) + 0)/2 - 20;
     if(center_use<Image_lie.Three_Lie[1]-10)//有效性检验
     {
       if(center_use < 35)
@@ -1413,10 +1415,10 @@ u8 Cross_curve_test()
     if(Liner_R_flag
        &&Turn_R_Flag
        &&Turn_R_index>5
-       &&Turn_R_early_cnt>Turn_R_index*2/3
+       &&Turn_R_early_cnt>Turn_R_index/2
        &&Turn_R_index<45
        &&Impulse_R_Flag
-       &&Turn_R_late_cnt>(Impulse_R_index-Turn_R_index)*2/3
+       &&Turn_R_late_cnt>(Impulse_R_index-Turn_R_index)/2
          )
     {
       Cross.State = L2Cross_True;
@@ -1429,10 +1431,10 @@ u8 Cross_curve_test()
     if(Liner_L_flag
        &&Turn_L_Flag
        &&Turn_L_index>5
-       &&Turn_L_early_cnt>Turn_L_index*2/3
+       &&Turn_L_early_cnt>Turn_L_index/2
        &&Turn_L_index<45
        &&Impulse_L_Flag
-       &&Turn_L_late_cnt>(Impulse_L_index-Turn_L_index)*2/3
+       &&Turn_L_late_cnt>(Impulse_L_index-Turn_L_index)/2
          )
     {
       Cross.State = R2Cross_True;
@@ -1512,89 +1514,10 @@ u8 Cross_center_test(int* start_end, int* end_end)//和出环岛时找中心点的代码一样
   return out_center;
 }
 
-u8 Out_Cross_test(void)
+u8 Out_Cross(void)
 {
-  int ccd_start=10,ccd_end=310;  //ccd扫描起点10，终点310   
-  int Left_Count=0,Right_Count=0;//左右计数为0
-  int L_black[10],R_black[10];
-  int Diff_L[9],Diff_R[9];//一阶差分
-  int DDiff_L[8],DDiff_R[8];//二阶差分
-  int   Liner_L_cnt  = 0,Liner_R_cnt  = 0;
-  u8    Liner_L_flag = 0,Liner_R_flag = 0;
-  u8    Impulse_L_Flag = 0,Impulse_R_Flag = 0;//一阶差分中出现阶跃
-  u8 i = 0,j = 0;
-  u8 *ImageData_in;
-
-  if(Cross.State!=L2Cross_True&&Cross.State!=R2Cross_True)
-    return 1;
-  
-  for(i=0;i<10;i++)//10行
-  {
-    ImageData_in = Image_fire[i*3+Far_Point];
-    for(j=0;j<40;j++)
-      for(u8 k=0;k<8;k++)
-        ImageData[j*8+k] = (ImageData_in[j]>>(7-k))&0x01;
-    
-    Right_Count = Image_lie.Three_Lie[1];//把黑线中间值赋给右计数起点
-    while(!(ImageData[Right_Count+3]==1 
-            && ImageData[Right_Count+2]==1
-              && ImageData[Right_Count+1]==1)
-          && Right_Count < ccd_end)//如果在有效区内没有找到连续三个黑点
-      Right_Count++;//从中间位置开始，往右数，发现往右三点都是黑点停
-    if(Right_Count<ccd_end)//如果在有效范围内
-    {
-      R_black[i] = Right_Count;
-    }
-    else
-    {
-      R_black[i] = ccd_end;
-    }
-    Left_Count = Image_lie.Three_Lie[1];
-    while(!(ImageData[Left_Count-3]==1 
-            && ImageData[Left_Count-2]==1
-              && ImageData[Left_Count-1]==1)
-          && Left_Count > ccd_start)	  
-      Left_Count--;
-    if(Left_Count > ccd_start)
-    {
-      L_black[i] = Left_Count; 
-    }
-    else
-    {
-      L_black[i] = ccd_start;
-    }
-  }
-  for(i=0;i<9;i++)
-  {
-    Diff_L[i] = L_black[i+1] - L_black[i];
-    Diff_R[i] = R_black[i+1] - R_black[i];
-  }
-  for(i=0;i<8;i++)
-  {
-    DDiff_L[i] = Diff_L[i+1] - Diff_L[i];
-    DDiff_R[i] = Diff_R[i+1] - Diff_R[i];
-    if(Abs_(DDiff_L[i])<3)Liner_L_cnt++;
-    if(Abs_(DDiff_R[i])<3)Liner_R_cnt++;
-    if(DDiff_L[i]<-30&&Liner_L_cnt>i-2&&Liner_L_cnt>1)
-    {
-      Impulse_L_Flag=1;//出现冲激
-    }
-    if(DDiff_R[i]>30&&Liner_R_cnt>i-2&&Liner_R_cnt>1)
-    {
-      Impulse_R_Flag=1;
-    }
-  }
-  if(Liner_L_cnt>6)Liner_L_flag = 1;
-  if(Liner_R_cnt>6)Liner_R_flag = 1;
-  
-  if(  Liner_L_flag
-     &&Impulse_R_Flag
-     &&Liner_R_flag
-     &&Impulse_L_Flag)
-  {
-    Cross.State = NoCross;
-    return 0;
-  }
+  if(Cross.State==NoCross&&Cross.Cross_delay_flag==1)
+    CenterlineToDiff(Cross.In_center/Cross_Center_Period_Const);
   return 0;
 }
 
@@ -1701,7 +1624,7 @@ u8 Find_Start_line(void)
       }
       cnt++;
     }
-    if(line_cnt>5)
+    if(line_cnt>12)
     {
       find_flag = 1;
       break;
@@ -1724,5 +1647,46 @@ u8 Start_Line_process(void)
     CenterlineToDiff(Image_hang.center[Image_hang.hang_use]);
   }
   if(Start_line.Start_Line_cnt==1)
+  {
+//    Beep_Once(&Image_Island_Test_Beep);
     Blue_Start_Flag = 0;//关闭电机
+  }
+  return 0;
+}
+
+u8 Power_Square_test(void)
+{
+  u8 Far_Lie[25];
+  int Diff_Far_Lie[24];//一阶差分
+  int DDiff_Far_Lie[23];//二阶差分
+  int Liner_cnt  = 0;
+  int out_center = 160;
+  
+  u8 Temp_point;
+  u8 i;
+  for(i=0;i<25;i++)
+  {
+    Temp_point=239;
+    while(!(Image_Point(Temp_point,0+i*4)==1
+          &&Image_Point(Temp_point-1,0+i*4)==1
+            &&Image_Point(Temp_point-2,0+i*4)==1)&&Temp_point>=10)
+    Temp_point--;
+    Far_Lie[i] = Temp_point;
+  }
+  for(i=0;i<24;i++)
+  {
+    Diff_Far_Lie[i] = Far_Lie[i+1] - Far_Lie[i];
+  }
+  for(i=0;i<23;i++)
+  {
+    DDiff_Far_Lie[i] = Diff_Far_Lie[i+1] - Diff_Far_Lie[i];
+    if(Abs_(DDiff_Far_Lie[i])<3)//线性标志
+      Liner_cnt++;
+    if(DDiff_Far_Lie[i]<-15&&Liner_cnt>i/2&&Liner_cnt>0)//之前线性，出现冲激
+    {
+      break;
+    }
+  }
+  out_center = 4*i;//记录突变点
+  return out_center;
 }

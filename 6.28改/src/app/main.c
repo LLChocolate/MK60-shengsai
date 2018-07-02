@@ -4,6 +4,8 @@
 
 u32 L_AD_Ave = 0;
 u32 R_AD_Ave = 0;
+u32 L_AD_Sum = 5000;
+u32 R_AD_Sum = 5000;
 Motor_Status Motor1;//电机状态结构体
 Motor_Status Motor2;//电机状态结构体
 int Speed_L_sum=0;

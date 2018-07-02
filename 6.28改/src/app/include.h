@@ -147,4 +147,7 @@ extern Beep_Str Image_Island_Test_Beep;//≤‚ ‘…„œÒÕ∑ª∑µ∫º‡≤‚
 extern PID_Struct Servo_PID;
 extern Cap_Run_Str Run_;
 extern Start_line_Str Start_line;
+extern Cross_Data Cross;
+extern u32 L_AD_Sum;
+extern u32 R_AD_Sum;
 #endif  //__INCLUDE_H__

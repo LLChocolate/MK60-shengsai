@@ -53,12 +53,14 @@ void AD_new(void)
   if(AD_Period > (speed_Period_Constant - 1))
     AD_Period = 0;
   
-  L_AD_Ave -= L_AD[AD_Period];
-  R_AD_Ave -= R_AD[AD_Period];
-  L_AD[AD_Period] = ad_once(MYADC_2,ADC_12bit);
-  R_AD[AD_Period] = ad_once(MYADC_3,ADC_12bit);
-  L_AD_Ave += L_AD[AD_Period];
-  R_AD_Ave += R_AD[AD_Period];
+  L_AD_Sum -= L_AD[AD_Period];
+  R_AD_Sum -= R_AD[AD_Period];
+  L_AD_Ave = ad_once(MYADC_1,ADC_12bit);
+  R_AD_Ave = ad_once(MYADC_2,ADC_12bit);
+  L_AD[AD_Period] = L_AD_Ave;
+  R_AD[AD_Period] = R_AD_Ave;
+  L_AD_Sum += L_AD[AD_Period];
+  R_AD_Sum += R_AD[AD_Period];
   AD_Period++;  
 }
 

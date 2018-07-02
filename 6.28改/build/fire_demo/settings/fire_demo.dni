@@ -31,7 +31,7 @@ ITMportsTermIO=0
 ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
 [DebugChecksum]
-Checksum=-1318829031
+Checksum=-326321350
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -43,6 +43,12 @@ MixedMode=1
 Enabled=_ 0
 [watch_formats]
 Fmt0={W}42:Car_Loc	0	4
+[Trace1]
+Enabled=0
+ShowSource=1
+[Trace2]
+Enabled=0
+ShowSource=0
 [SWOTraceWindow]
 PcSampling=0
 InterruptLogs=0
@@ -81,25 +87,6 @@ GraphEnabled=0
 ShowTimeLog=1
 ShowTimeSum=1
 SumSortOrder=0
-[Log file]
-LoggingEnabled=_ 0
-LogFile=_ ""
-Category=_ 0
-[TermIOLog]
-LoggingEnabled=_ 0
-LogFile=_ ""
-[CallStackLog]
-Enabled=0
-[PowerProbe]
-Frequency=10000
-Probe0=I0
-ProbeSetup0=2 1 1 2 0 0
-[DriverProfiling]
-Enabled=0
-Mode=1
-Graph=0
-Symbiont=0
-Exclusions=
 [Disassemble mode]
 mode=0
 [Breakpoints2]
@@ -113,10 +100,17 @@ Bp6=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\src\app}.139.5" 0 0 1 "" 0 "" 0
 Bp7=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\..\..\2017.8电赛\模版 - 增量式}.300.3" 0 0 1 "" 0 "" 0
 Bp8=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\src\drivers\MPU6050\eMPL\inv_mpu.c}.2884.2" 0 0 1 "" 0 "" 0
 Bp9=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\src\drivers\MPU6050\mpu6050.c}.35.2" 0 0 1 "" 0 "" 0
-Bp10=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\src\app\isr.c}.539.1" 0 0 1 "" 0 "" 0
+Bp10=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\src\app\isr.c}.507.1" 0 0 1 "" 0 "" 0
 Bp11=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\src\app}.3.1" 0 0 1 "" 0 "" 0
 Bp12=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\src\app}.18.1" 0 0 1 "" 0 "" 0
 Count=13
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
 [Aliases]
 A0=_ "D:\MK60\1.12调车\车模板\src\drivers\LCD\LCD.c" ""
 A1=_ "D:\MK60\1.16调车(好用)\校赛1.20凌晨\1.16调车\车模板\src\drivers\LCD\LCD.c" ""
@@ -150,3 +144,15 @@ A28=_ "E:\学习区\智能车\赛区赛\单车\A\新模版_单车六电感_环形\src\common\printf.c
 A29=_ "E:\学习区\智能车\校赛\模版\src\cpu\crt0.s" ""
 Count=30
 SuppressDialog=0
+[CallStackLog]
+Enabled=0
+[PowerProbe]
+Frequency=10000
+Probe0=I0
+ProbeSetup0=2 1 1 2 0 0
+[DriverProfiling]
+Enabled=0
+Mode=1
+Graph=0
+Symbiont=0
+Exclusions=
